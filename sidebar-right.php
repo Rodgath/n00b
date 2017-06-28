@@ -18,13 +18,13 @@ if (!is_active_sidebar('sidebar-widget-right')) {
 <!-- START Sidebar Right -->
 <div class="sidebar-content">
 
-	<?php do_action('n00b_sidebar_right_top'); ?>
+	<?php do_action('n00b_right_sidebar_top_hook'); ?>
 	
 	<div class="sidebar-widget">
 		<?php if (function_exists('dynamic_sidebar')) { dynamic_sidebar('sidebar-widget-right'); } ?>
 	</div>
 	
-	<?php do_action('n00b_sidebar_right_bottom'); ?>
+	<?php do_action('n00b_right_sidebar_bottom_hook'); ?>
 
 </div>
 <!-- END Sidebar Right -->

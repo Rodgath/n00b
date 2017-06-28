@@ -1,4 +1,5 @@
 <?php
+
 /**
  * n00b functions and definitions
  *
@@ -224,7 +225,7 @@ if (!class_exists('n00b_nav_walker')) {
 	
 	class n00b_nav_walker extends Walker_Nav_menu {
 
-		function start_lvl( &$output, $depth = 0, $args = array() ){ // ul
+		function start_lvl( &$output, $depth = 0, $args = array() ) { // ul
 			$indent  = str_repeat("\t",$depth); // indents the outputted HTML
 			$submenu = ($depth > 0) ? ' sub-menu' : '';
 			$output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
@@ -277,6 +278,14 @@ if (!class_exists('n00b_nav_walker')) {
 
 /**
  * Custom Comments Callback
+ *
+ * @since 1.0
+ *
+ * @param	string	$comment
+ * @param	array	$args
+ * @param	int		$depth
+ * @return	string	Updated comment form fields html
+ *
  */
 if (!function_exists('n00b_comments')) {
 	
@@ -288,7 +297,7 @@ if (!function_exists('n00b_comments')) {
 
 		<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
 			<div class="comment-body">
-				<?php _e('Pingback:', 'n00b'); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
+				<?php esc_html_e('Pingback:', 'n00b'); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
 			</div>
 
 		<?php else : ?>
@@ -298,11 +307,11 @@ if (!function_exists('n00b_comments')) {
 				<footer class="comment-meta">
 					<div class="comment-author vcard">
 						<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-						<?php printf( __('%s <span class="says">says:</span>', 'n00b'), sprintf('<cite class="fn">%s</cite>', get_comment_author_link()) ); ?>
+						<?php printf( esc_html__('%s <span class="says">says:</span>', 'n00b'), sprintf('<cite class="fn">%s</cite>', get_comment_author_link()) ); ?>
 					</div>
 					
 					<?php if ('0' == $comment->comment_approved) : ?>
-					<p class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', 'n00b'); ?></p>
+					<p class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.', 'n00b'); ?></p>
 					<?php endif; ?>
 					
 					<div class="comment-metadata">
@@ -311,7 +320,7 @@ if (!function_exists('n00b_comments')) {
 								<?php printf( _x('%1$s at %2$s', '1: date, 2: time', 'n00b'), get_comment_date(), get_comment_time() ); ?>
 							</time>
 						</a>
-						<?php edit_comment_link( __('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
+						<?php edit_comment_link( esc_html__('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
 					</div>
 				</footer>
 				
@@ -332,6 +341,59 @@ if (!function_exists('n00b_comments')) {
 			
 		<?php
 		endif;
+	}
+}
+
+
+/**
+ * Update default form fields and add "required" span
+ *
+ * @since 1.0
+ *
+ * @param	array	$fields	The default comment fields
+ * @return	string	Updated comment form fields html
+ *
+ */
+if (!function_exists('n00b_comment_form_default_fields')) {
+	
+	apply_filters('comment_form_default_fields', 'n00b_comment_form_default_fields');
+	function n00b_comment_form_default_fields($fields) {
+
+		$commenter = wp_get_current_commenter();
+		$req       = get_option('require_name_email');
+		$aria_req  = $req ? " aria-required='true'" : '';
+
+		$fields['author'] = '<p class="comment-form-author">' . '<label for="author">' . esc_html__('Name', 'n00b') . ($req ? ' <span class="required">*</span>' : '') . '</label> ' . '<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' /></p>';
+
+		$fields['email'] = '<p class="comment-form-email"><label for="email">' . esc_html__('Email', 'n00b') . ($req ? ' <span class="required">*</span>' : '') . '</label> ' . '<input id="email" email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' /></p>';
+
+		$fields['url'] = '<p class="comment-form-url"><label for="url">' . esc_html__('Website', 'n00b') . '</label>' . '<input id="url" name="url" type="text" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" /></p>';
+
+		return $fields;
+
+	}
+}
+
+
+/**
+ * Update comment textarea field and add "required" span to 
+ * prevent submission of empty comments
+ *
+ * @since 1.0
+ *
+ * @param	string	$field	The content of the comment textarea field.
+ * @return	string	Updated comment form textarea html
+ *
+ */
+if (!function_exists('n00b_comment_form_default_fields')) {
+	
+	add_filter('comment_form_field_comment', 'n00b_comment_form_field_comment');
+	function n00b_comment_form_field_comment($field) {
+
+		$field = '<p class="comment-form-comment"><label for="comment">' . _x('Comment', 'noun', 'n00b') . ' <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
+
+		return $field;
+
 	}
 }
 
@@ -458,5 +520,5 @@ if (!function_exists('n00b_get_sidebar_col_class')) {
  * Include custom functions file if it exists
  */
 if (file_exists(get_template_directory() .'/includes/functions/functions-custom.php')) {
-	include get_template_directory() .'/includes/functions/functions-custom.php';
+	include_once get_template_directory() .'/includes/functions/functions-custom.php';
 }
