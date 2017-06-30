@@ -18,6 +18,7 @@ themes/your-theme-name/                      # → Root of your n00b based theme
 │   └── js/                                  # → JavaScripts
 ├── includes/                                # → Theme includes
 │   ├── functions/                           # → Theme funstions
+│   │   └── custom-functions-sample.php      # → Custom functions sample - Rename to custom-functions.php
 │   ├── post-types/                          # → Theme custom post types
 │   ├── shortcodes/                          # → Theme shortcodes
 │   └── widgets/                             # → Theme widgets
@@ -54,7 +55,7 @@ themes/your-theme-name/                      # → Root of your n00b based theme
 ├── embed-{post_type}-{post_format}.php      # → Single embed template e.g. embed-post-audio.php
 ├── footer.php                               # → Footer template
 ├── footer-{name}.php                        # → Custom footer template e.g. footer-new.php
-├── functions.php                            # → Theme functions (never edit - instead use includes/function/functions-custom.php)
+├── functions.php                            # → Theme functions (never edit - use includes/function/funstions-custom.php)
 ├── header.php                               # → Header template file
 ├── header-{name}.php                        # → Custom header template e.g. header-new.php
 ├── index.php                                # → Home template if home.php dows not exist
@@ -79,7 +80,3 @@ themes/your-theme-name/                      # → Root of your n00b based theme
 ├── taxonomy-{taxonomy_slug}.php             # → Single taxonomy template e.g. location.php
 └── taxonomy-{taxonomy_slug}-{term_slug}.php # → Single taxonomy template e.g. taxonomy-location-texas.php
 ```
-
-
-
-
