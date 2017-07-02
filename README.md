@@ -12,7 +12,7 @@ VERY SIMPLE WordPress starter theme for newbies and noobs.
 ```
 themes/your-theme-name/                      # → Root of your n00b based theme
 ├── assets/                                  # → Theme assets
-│   ├── css/                                 # → Theme stylesheets
+│   ├── css/                                 # → Stylesheets
 │   ├── fonts/                               # → Fonts
 │   ├── images/                              # → Images
 │   └── js/                                  # → JavaScripts
