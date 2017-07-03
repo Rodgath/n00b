@@ -6,10 +6,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage n00b
- * @since 1.0
- * @version 1.0
+ * @since      1.0
+ * @version    1.0
  */
 
 ?>

@@ -1,5 +1,14 @@
 <?php 
-
+/**
+ * The template for displaying single post content
+ *
+ * @package    WordPress
+ * @subpackage n00b
+ * @since      1.0
+ * @version    1.0
+ * @link       https://codex.wordpress.org/Template_Hierarchy
+ */
+ 
 get_header(); 
 
 $container   = get_theme_mod('n00b_container_type');

@@ -1,13 +1,13 @@
 <?php
 /**
- * The template for displaying author pages
+ * The template for displaying specific author page using author nicename
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage n00b
- * @since 1.0
- * @version 1.0
+ * @since      1.0
+ * @version    1.0
  */
 
 get_header();

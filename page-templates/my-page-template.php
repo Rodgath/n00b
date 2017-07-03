@@ -1,14 +1,6 @@
-<?php
-/**
- * The template for displaying post-type archive pages
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package    WordPress
- * @subpackage n00b
- * @since      1.0
- * @version    1.0
- */
+<?php 
+
+/* Template Name: Custom Page */
 
 get_header(); 
 
@@ -26,20 +18,7 @@ $article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<?php if (is_category()) { ?>
-						<h1><?php _e('Posts Categorized:', 'n00b'); ?> <?php single_cat_title(); ?></h1>
-					<?php } elseif (is_tag()) { ?>
-						<h1><?php _e('Posts Tagged:', 'n00b'); ?> <?php single_tag_title(); ?></h1>
-					<?php } elseif (is_author()) {
-						global $post; $author_id = $post->post_author; ?>
-						<h1><?php _e('Posts By:', 'n00b'); ?> <?php the_author_meta('display_name', $author_id); ?></h1>
-					<?php } elseif (is_day()) { ?>
-						<h1><?php _e('Daily Archives:', 'n00b'); ?> <?php the_time('l, F j, Y'); ?></h1>
-					<?php } elseif (is_month()) { ?>
-						<h1><?php _e('Monthly Archives:', 'n00b'); ?> <?php the_time('F Y'); ?></h1>
-					<?php } elseif (is_year()) { ?>
-						<h1><?php _e('Yearly Archives:', 'n00b'); ?> <?php the_time('Y'); ?></h1>
-					<?php } ?>
+					<h1><?php //the_title(); ?></h1>
 				</div>
 			</div>
 		</div>		
@@ -57,15 +36,11 @@ $article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
 				</aside>
 				<?php } ?>
 				
+				<?php while (have_posts()) : the_post(); ?>
 				<div class="content <?php echo $article_col; ?>">
-				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<?php get_template_part('template-parts/content', 'archive'); ?>
-				<?php endwhile; ?>
-					<?php get_template_part('template-parts/content', 'pagenav'); ?>
-				<?php else : ?>
-					<?php get_template_part('template-parts/content', 'none'); ?>
-				<?php endif; ?>
+					<?php get_template_part('template-parts/content', 'page'); ?>
 				</div>
+				<?php endwhile; ?>
 				
 				<?php if ('right' === $sidebar_pos || 'both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) { ?>
 				<aside class="sidebar sidebar-right <?php echo $sidebar_right_col; ?>" role="complementary">

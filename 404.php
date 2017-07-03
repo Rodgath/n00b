@@ -2,12 +2,11 @@
 /**
  * The template for displaying 404 pages (not found)
  *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package WordPress
+ * @package    WordPress
  * @subpackage n00b
- * @since 1.0
- * @version 1.0
+ * @since      1.0
+ * @version    1.0
+ * @link       https://codex.wordpress.org/Creating_an_Error_404_Page
  */
 
 get_header(); 
@@ -30,7 +29,7 @@ $article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col', 'co
 		</div>		
 	</section>
 	<!-- END Title section -->
-	
+
 	<!-- START Content section -->
 	<section id="content">
 		<div class="container">

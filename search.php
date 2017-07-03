@@ -2,12 +2,11 @@
 /**
  * The template for displaying search results pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package WordPress
+ * @package    WordPress
  * @subpackage n00b
- * @since 1.0
- * @version 1.0
+ * @since      1.0
+ * @version    1.0
+ * @link       https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  */
 
 get_header(); 

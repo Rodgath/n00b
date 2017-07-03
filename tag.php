@@ -1,4 +1,13 @@
 <?php 
+/**
+ * The template for displaying tag archive
+ *
+ * @package    WordPress
+ * @subpackage n00b
+ * @since      1.0
+ * @version    1.0
+ * @link       https://codex.wordpress.org/Template_Hierarchy
+ */
 
 get_header(); 
 

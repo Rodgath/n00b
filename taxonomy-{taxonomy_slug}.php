@@ -1,16 +1,22 @@
 <?php
 /**
- * The template for displaying post-type archive pages
+ * The template for displaying custom post type taxonomy
  *
- * @link https://codex.wordpress.org/Template_Hierarchy
+ * This is the custom post type taxonomy template. If you edit the custom taxonomy name,
+ * you've got to change the name of this template to reflect that name change.
  *
- * @package    WordPress
+ * For Example, if your custom taxonomy is called "register_taxonomy('location')",
+ * then your template name should be taxonomy-location.php
+ *
+ * @link http://codex.wordpress.org/Post_Type_Templates#Displaying_Custom_Taxonomies
+ *
+ * @package WordPress
  * @subpackage n00b
- * @since      1.0
- * @version    1.0
+ * @since 1.0
+ * @version 1.0
  */
 
-get_header(); 
+get_header();
 
 $container   = get_theme_mod('n00b_container_type');
 $sidebar_pos = get_theme_mod('n00b_sidebar_position');
@@ -26,20 +32,7 @@ $article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<?php if (is_category()) { ?>
-						<h1><?php _e('Posts Categorized:', 'n00b'); ?> <?php single_cat_title(); ?></h1>
-					<?php } elseif (is_tag()) { ?>
-						<h1><?php _e('Posts Tagged:', 'n00b'); ?> <?php single_tag_title(); ?></h1>
-					<?php } elseif (is_author()) {
-						global $post; $author_id = $post->post_author; ?>
-						<h1><?php _e('Posts By:', 'n00b'); ?> <?php the_author_meta('display_name', $author_id); ?></h1>
-					<?php } elseif (is_day()) { ?>
-						<h1><?php _e('Daily Archives:', 'n00b'); ?> <?php the_time('l, F j, Y'); ?></h1>
-					<?php } elseif (is_month()) { ?>
-						<h1><?php _e('Monthly Archives:', 'n00b'); ?> <?php the_time('F Y'); ?></h1>
-					<?php } elseif (is_year()) { ?>
-						<h1><?php _e('Yearly Archives:', 'n00b'); ?> <?php the_time('Y'); ?></h1>
-					<?php } ?>
+					<h1><?php _e('Posts Categorized:', 'n00b'); ?> <?php single_cat_title(); ?></h1>
 				</div>
 			</div>
 		</div>		
@@ -59,7 +52,7 @@ $article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
 				
 				<div class="content <?php echo $article_col; ?>">
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<?php get_template_part('template-parts/content', 'archive'); ?>
+					<?php get_template_part('template-parts/content', 'category'); ?>
 				<?php endwhile; ?>
 					<?php get_template_part('template-parts/content', 'pagenav'); ?>
 				<?php else : ?>

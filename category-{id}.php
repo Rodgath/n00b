@@ -1,5 +1,15 @@
-<?php 
-
+<?php
+/**
+ * The template for displaying specific category archive using category id
+ *
+ * @link https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package    WordPress
+ * @subpackage n00b
+ * @since      1.1
+ * @version    1.0
+ */
+ 
 get_header(); 
 
 $container   = get_theme_mod('n00b_container_type');

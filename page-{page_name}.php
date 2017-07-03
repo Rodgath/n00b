@@ -1,5 +1,14 @@
-<?php 
-
+<?php
+/**
+ * The page template for specific page page_name
+ *
+ * @package    WordPress
+ * @subpackage n00b
+ * @since      1.1
+ * @version    1.0
+ * @link       https://codex.wordpress.org/Template_Hierarchy
+ */
+ 
 get_header(); 
 
 $container   = get_theme_mod('n00b_container_type');

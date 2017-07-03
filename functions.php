@@ -5,9 +5,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage n00b
- * @since 1.0
+ * @since      1.0
+ * @version    1.0
  */
  
 require_once 'admin/index.php';
