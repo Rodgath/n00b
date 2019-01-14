@@ -1,5 +1,6 @@
 # n00b
 VERY SIMPLE WordPress starter theme for newbies and noobs.
+
 Feel free to use this starter theme in your premium and commercial projects.
 
 ## Features
@@ -73,7 +74,7 @@ themes/your-theme-name/                      # → Root of your n00b based theme
 ├── single.php                               # → General tag template
 ├── single-{post_type}.php                   # → Single post type template e.g. single-post.php
 ├── single-{post_type}-{post_name}.php       # → Single post type template e.g. single-post-hello-world.php
-├── style.css                                # → heme meta information
+├── style.css                                # → Theme meta information
 ├── tag.php                                  # → General tag template
 ├── tag-{id}.php                             # → Single tag template e.g. tag-3.php
 ├── tag-{slug}.php                           # → Single tag template e.g. tag-wordpress.php)
