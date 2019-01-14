@@ -1,11 +1,12 @@
 # n00b
 VERY SIMPLE WordPress starter theme for newbies and noobs.
+Feel free to use this starter theme in your premium and commercial projects.
 
 ## Features
 * Easy to use
 * Short learning curve
-* Dilaz-Panel compatible
-* Dilaz-Metaboxes compatible
+* [Dilaz-Panel](https://github.com/Rodgath/Dilaz-Panel-Plugin) compatible
+* [Dilaz-Metaboxes](https://github.com/Rodgath/Dilaz-Metaboxes-Plugin) compatible
 
 
 ## Theme Structure
