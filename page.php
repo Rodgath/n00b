@@ -15,14 +15,19 @@
  * @version    1.0
  */
 
-get_header();
+get_header(); 
 
-$container   = get_theme_mod('n00b_container_type');
-$sidebar_pos = get_theme_mod('n00b_sidebar_position');
-
-$sidebar_left_col  = n00b_get_sidebar_col_class($sidebar_pos, 'sidebar_left_col');
-$sidebar_right_col = n00b_get_sidebar_col_class($sidebar_pos, 'sidebar_right_col');
-$article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
+$metabox_prefix = 'my_prefix_';
+$object_id = get_queried_object_id();
+$container = n00b_get_option('n00b_options', 'container_type', $object_id, $args = array('metabox_prefix' => $metabox_prefix));
+$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', $object_id, $args = array('metabox_prefix' => $metabox_prefix));
+$layout_cols = get_post_meta($object_id, $metabox_prefix .'layout_cols', true);
+$layout_cols = (get_post_meta($object_id, $metabox_prefix .'sidebar_position', true) == 'default') ? n00b_get_option('n00b_options', 'layout_cols', $object_id) : $layout_cols;
+$layout_cols_object = n00b_req_col_object($layout_cols);
+extract($layout_cols_object);
+$sidebar_left_col = n00b_get_col_class($sidebar_pos, 'sidebar_left_col', $req_cols_slc, $req_last_slc);
+$sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col', $req_cols_src, $req_last_src);
+$article_col = n00b_get_col_class($sidebar_pos, 'article_col', $req_cols_ac, $req_last_ac);
 
 ?>
 
@@ -31,7 +36,7 @@ $article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h1><?php //the_title(); ?></h1>
+					<h1><?php the_title(); ?></h1>
 				</div>
 			</div>
 		</div>		

@@ -76,7 +76,15 @@ textarea {
 /*-----------------------------------------------------------------------------------*/
 /*	07.	Comments
 /*-----------------------------------------------------------------------------------*/
-
+div[class^="comment-form-"] {
+	margin-bottom: 15px;
+}
+div[class^="comment-form-"] input[name="author"],
+div[class^="comment-form-"] input[name="email"],
+div[class^="comment-form-"] input[name="url"],
+div[class^="comment-form-"] textarea[name="comment"] {
+	width: 100%;
+}
 
 /*-----------------------------------------------------------------------------------*/
 /*	08.	Pagination

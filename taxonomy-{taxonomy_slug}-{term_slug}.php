@@ -19,12 +19,12 @@
 
 get_header();
 
-$container   = get_theme_mod('n00b_container_type');
-$sidebar_pos = get_theme_mod('n00b_sidebar_position');
+$container   = n00b_get_option('n00b_options', 'container_type', get_queried_object_id());
+$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id());
 
-$sidebar_left_col  = n00b_get_sidebar_col_class($sidebar_pos, 'sidebar_left_col');
-$sidebar_right_col = n00b_get_sidebar_col_class($sidebar_pos, 'sidebar_right_col');
-$article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
+$sidebar_left_col  = n00b_get_col_class($sidebar_pos, 'sidebar_left_col');
+$sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col');
+$article_col       = n00b_get_col_class($sidebar_pos, 'article_col');
 
 ?>
 

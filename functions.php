@@ -1,5 +1,13 @@
 <?php
 
+
+/**
+ * Include custom functions file if it exists
+ */
+if (file_exists(get_template_directory() .'/includes/functions/functions-custom.php')) {
+	include_once get_template_directory() .'/includes/functions/functions-custom.php';
+}
+
 /**
  * n00b functions and definitions
  *
@@ -11,9 +19,19 @@
  * @version    1.0
  */
  
-require_once 'admin/index.php';
-require_once 'metaboxes/metabox.php';
+require_once 'admin/admin.php';
+require_once 'metabox/metabox.php';
 require_once 'includes/functions/customizer.php';
+
+// $dilazPanelo = new DilazPanel();
+// $dilazPanelo = getOption('dilaz_options');
+// var_dump($dilazPanelo); exit;
+// $dilazPanelo->set_option('dilaz_options', $option_id, $option_value = false, $option_type = false)); exit;
+// $dilazPanelo->set_option('dilaz_options', 'texti', 'dadada', 'text');
+// $dilazPanelo->delete_option('dilaz_options', 'texti');
+// var_dump(DilazPanel::getOption('dilaz_options', 'texti')); exit;
+// var_dump(getOption('dilaz_options')); exit;
+// var_dump(DilazPanel::getOptions('dilaz_options')); exit;
 
 /**
  * Maximum allowed content width
@@ -22,7 +40,6 @@ if (!isset($content_width)) {
     $content_width = 770;
 }
 
-
 /**
  * Theme setup
  */
@@ -30,25 +47,25 @@ add_action('after_setup_theme', 'n00b_theme_setup');
 if (!function_exists('n00b_theme_setup')) {
 	
 	function n00b_theme_setup() {
-
+		
 		/* Enable theme translation */
 		load_theme_textdomain('n00b', get_template_directory() . '/languages');
-
+		
 		/* Posts and comments feed links in head */
 		add_theme_support('automatic-feed-links');
-
+		
 		/* Featured images */
 		add_theme_support('post-thumbnails');
-
+		
 		/* Post formats */
-		add_theme_support('post-formats', apply_filters('n00b_post_formats', array( 'aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'audio', 'chat' )));
-
+		add_theme_support('post-formats', apply_filters('n00b_post_formats', array('aside', 'image', 'gallery', 'link', 'quote', 'status', 'video', 'audio', 'chat')));
+		
 		/* HTML5 output */
-		add_theme_support('html5', apply_filters('n00b_html5_output', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' )));
-
+		add_theme_support('html5', apply_filters('n00b_html5_output', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption')));
+		
 		/* Title tag output */
 		add_theme_support('title-tag');
-
+		
 		/* Menu location */
 		register_nav_menus(apply_filters('n00b_nav_menus', array(
 			// 'top-menu'     => __('Top Header Menu', 'n00b'),
@@ -57,7 +74,7 @@ if (!function_exists('n00b_theme_setup')) {
 			'sidebar-menu' => __('Sidebar Menu', 'n00b'),
 			'other-menu'   => __('Other Menu', 'n00b'), 
 		)));
-
+		
 		/* load custom walker menu class file */
 		// require 'includes/class-n00b_walker_nav_menu.php';
 
@@ -72,13 +89,13 @@ if (!function_exists('n00b_theme_setup')) {
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
-add_action( 'widgets_init', 'n00b_widgets_init' );
+add_action('widgets_init', 'n00b_widgets_init');
 if (!function_exists('n00b_widgets_init')) {
 	
 	function n00b_widgets_init() {
-
+		
 		if (function_exists('register_sidebar')) {
-
+			
 			/* Register sidebar widget main */
 			register_sidebar(apply_filters('n00b_sidebar_widget_main', array(
 				'name'          => __('Sidebar Widget Main', 'n00b'),
@@ -89,7 +106,7 @@ if (!function_exists('n00b_widgets_init')) {
 				'before_title'  => '<h3 class="widget-title">',
 				'after_title'   => '</h3>',
 			)));
-
+			
 			/* Register sidebar widget right */
 			register_sidebar(apply_filters('n00b_sidebar_widget_right', array(
 				'name'          => __('Sidebar Widget Right', 'n00b'),
@@ -100,7 +117,7 @@ if (!function_exists('n00b_widgets_init')) {
 				'before_title'  => '<h3 class="widget-title">',
 				'after_title'   => '</h3>',
 			)));
-
+			
 			/* Register sidebar widget left */
 			register_sidebar(apply_filters('n00b_sidebar_widget_left', array(
 				'name'          => __('Sidebar Widget Left', 'n00b'),
@@ -147,12 +164,12 @@ if (!function_exists('n00b_enqueue_assets')) {
 			}
 			
 			do_action('n00b_after_styles_enqueue');
-		
+			
 		// SCRIPTS
 		// ========================================================= //
 			
 			do_action('n00b_before_scripts_enqueue');
-		
+			
 			if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 				
 				/* jQuery */
@@ -221,26 +238,28 @@ if (!function_exists('n00b_main_nav')) {
 }
 
 
-
+/**
+ * n00b nav walker
+ */
 if (!class_exists('n00b_nav_walker')) {
 	
 	class n00b_nav_walker extends Walker_Nav_menu {
-
+		
 		function start_lvl( &$output, $depth = 0, $args = array() ) { // ul
 			$indent  = str_repeat("\t",$depth); // indents the outputted HTML
 			$submenu = ($depth > 0) ? ' sub-menu' : '';
 			$output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
 		}
-
+		
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) { // li a span
-
+		
 			$indent = ( $depth ) ? str_repeat("\t",$depth) : '';
-
+			
 			$li_attributes = '';
 			$class_names = $value = '';
-
+			
 			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-
+			
 			$classes[] = ($args->walker->has_children) ? 'dropdown' : '';
 			$classes[] = ($item->current || $item->current_item_anchestor) ? 'active' : '';
 			$classes[] = 'nav-item';
@@ -248,30 +267,30 @@ if (!class_exists('n00b_nav_walker')) {
 			if( $depth && $args->walker->has_children ){
 				$classes[] = 'dropdown-menu';
 			}
-
+			
 			$class_names =  join(' ', apply_filters('nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 			$class_names = ' class="' . esc_attr($class_names) . '"';
-
+			
 			$id = apply_filters('nav_menu_item_id', 'menu-item-'.$item->ID, $item, $args);
 			$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
-
+			
 			$output .= $indent . '<li ' . $id . $value . $class_names . $li_attributes . '>';
-
+			
 			$attributes = ! empty( $item->attr_title ) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
 			$attributes .= ! empty( $item->target ) ? ' target="' . esc_attr($item->target) . '"' : '';
 			$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
 			$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr($item->url) . '"' : '';
-
+			
 			$attributes .= ( $args->walker->has_children ) ? ' class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="nav-link"';
-
+			
 			$item_output = $args->before;
 			$item_output .= ( $depth > 0 ) ? '<a class="dropdown-item"' . $attributes . '>' : '<a' . $attributes . '>';
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;
-
+			
 			$output .= apply_filters ( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-
+			
 		}
 	}
 }
@@ -280,12 +299,11 @@ if (!class_exists('n00b_nav_walker')) {
 /**
  * Custom Comments Callback
  *
- * @since 1.0
- *
- * @param	string	$comment
- * @param	array	$args
- * @param	int		$depth
- * @return	string	Updated comment form fields html
+ * @since  1.0
+ * @param  string $comment
+ * @param  array  $args
+ * @param  int    $depth
+ * @return string Updated comment form fields html
  *
  */
 if (!function_exists('n00b_comments')) {
@@ -293,55 +311,55 @@ if (!function_exists('n00b_comments')) {
 	function n00b_comments($comment, $args, $depth) {
 		
 		$GLOBALS['comment'] = $comment;
-
-		if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
-
-		<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
-			<div class="comment-body">
-				<?php esc_html_e('Pingback:', 'n00b'); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
-			</div>
-
-		<?php else : ?>
-
-		<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
-			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
-				<footer class="comment-meta">
-					<div class="comment-author vcard">
-						<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-						<?php printf( esc_html__('%s <span class="says">says:</span>', 'n00b'), sprintf('<cite class="fn">%s</cite>', get_comment_author_link()) ); ?>
-					</div>
-					
-					<?php if ('0' == $comment->comment_approved) : ?>
-					<p class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.', 'n00b'); ?></p>
-					<?php endif; ?>
-					
-					<div class="comment-metadata">
-						<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
-							<time datetime="<?php comment_time( 'c' ); ?>">
-								<?php printf( _x('%1$s at %2$s', '1: date, 2: time', 'n00b'), get_comment_date(), get_comment_time() ); ?>
-							</time>
-						</a>
-						<?php edit_comment_link( esc_html__('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
-					</div>
-				</footer>
-				
-				<div class="comment-content">
-					<?php comment_text(); ?>
+		
+		if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) { ?>
+		
+			<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+				<div class="comment-body">
+					<?php esc_html_e('Pingback:', 'n00b'); ?> <?php comment_author_link(); ?> <?php edit_comment_link( esc_html__('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
 				</div>
 				
-				<?php
-					comment_reply_link( array_merge( $args, array(
-						'add_below' => 'div-comment',
-						'depth'     => $depth,
-						'max_depth' => $args['max_depth'],
-						'before'    => '<div class="reply">',
-						'after'     => '</div>',
-					) ) );
-				?>
-			</article>
+		<?php } else { ?>
 			
-		<?php
-		endif;
+			<li id="comment-<?php comment_ID(); ?>" <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ); ?>>
+				<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
+					<footer class="comment-meta">
+						<div class="comment-author vcard">
+							<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+							<?php printf( esc_html_x('%1$s %2$s', '1: cite, 2: says', 'n00b'), sprintf('<cite class="fn">%s</cite>', get_comment_author_link()), sprintf('<span class="says">%s</span>', __('says:', 'n00b')) ); ?>
+						</div>
+						
+						<?php if ('0' == $comment->comment_approved) { ?>
+						<p class="comment-awaiting-moderation"><?php esc_html_e('Your comment is awaiting moderation.', 'n00b'); ?></p>
+						<?php } ?>
+						
+						<div class="comment-metadata">
+							<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>">
+								<time datetime="<?php comment_time( 'c' ); ?>">
+									<?php printf( _x('%1$s at %2$s', '1: date, 2: time', 'n00b'), get_comment_date(), get_comment_time() ); ?>
+								</time>
+							</a>
+							<?php edit_comment_link( esc_html__('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
+						</div>
+					</footer>
+					
+					<div class="comment-content">
+						<?php comment_text(); ?>
+					</div>
+					
+					<?php
+						comment_reply_link( array_merge( $args, array(
+							'add_below' => 'div-comment',
+							'depth'     => $depth,
+							'max_depth' => $args['max_depth'],
+							'before'    => '<div class="reply">',
+							'after'     => '</div>',
+						) ) );
+					?>
+				</article>
+				
+			<?php
+		}
 	}
 }
 
@@ -349,52 +367,28 @@ if (!function_exists('n00b_comments')) {
 /**
  * Update default form fields and add "required" span
  *
- * @since 1.0
- *
- * @param	array	$fields	The default comment fields
- * @return	string	Updated comment form fields html
+ * @since  1.0
+ * @param  array  $fields The default comment fields
+ * @return string         Updated comment form fields html
  *
  */
+add_filter('comment_form_fields', 'n00b_comment_form_default_fields');
 if (!function_exists('n00b_comment_form_default_fields')) {
-	
-	apply_filters('comment_form_default_fields', 'n00b_comment_form_default_fields');
 	function n00b_comment_form_default_fields($fields) {
-
+		
 		$commenter = wp_get_current_commenter();
 		$req       = get_option('require_name_email');
 		$aria_req  = $req ? " aria-required='true'" : '';
-
-		$fields['author'] = '<p class="comment-form-author">' . '<label for="author">' . esc_html__('Name', 'n00b') . ($req ? ' <span class="required">*</span>' : '') . '</label> ' . '<input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' /></p>';
-
-		$fields['email'] = '<p class="comment-form-email"><label for="email">' . esc_html__('Email', 'n00b') . ($req ? ' <span class="required">*</span>' : '') . '</label> ' . '<input id="email" email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' /></p>';
-
-		$fields['url'] = '<p class="comment-form-url"><label for="url">' . esc_html__('Website', 'n00b') . '</label>' . '<input id="url" name="url" type="text" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" /></p>';
-
+		
+		$fields['author'] = '<div class="comment-form-author"><label for="author">' . esc_html__('Name', 'n00b') . ($req ? ' <span class="required">*</span>' : '') . '</label><br />  <input id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' /></div>';
+		
+		$fields['email'] = '<div class="comment-form-email"><label for="email">' . esc_html__('Email', 'n00b') . ($req ? ' <span class="required">*</span>' : '') . '</label><br />  <input id="email" email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' /></div>';
+		
+		$fields['url'] = '<div class="comment-form-url"><label for="url">' . esc_html__('Website', 'n00b') . '</label><br />' . '<input id="url" name="url" type="text" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" /></div>';
+		
+		$fields['comment'] = '<div class="comment-form-comment"><label for="comment">' . _x('Comment', 'noun', 'n00b') . ' <span class="required">*</span></label><br /><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" class="col-md-12"></textarea></div>';
+		
 		return $fields;
-
-	}
-}
-
-
-/**
- * Update comment textarea field and add "required" span to 
- * prevent submission of empty comments
- *
- * @since 1.0
- *
- * @param	string	$field	The content of the comment textarea field.
- * @return	string	Updated comment form textarea html
- *
- */
-if (!function_exists('n00b_comment_form_default_fields')) {
-	
-	add_filter('comment_form_field_comment', 'n00b_comment_form_field_comment');
-	function n00b_comment_form_field_comment($field) {
-
-		$field = '<p class="comment-form-comment"><label for="comment">' . _x('Comment', 'noun', 'n00b') . ' <span class="required">*</span></label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>';
-
-		return $field;
-
 	}
 }
 
@@ -407,7 +401,7 @@ if (!function_exists('n00b_adjacent_posts')) {
 	function n00b_adjacent_posts() {
 		
 		global $post;
-
+		
 		/* Don't print empty markup on single pages if there's nowhere to navigate */
 		$previous = is_attachment() ? get_post($post->post_parent) : get_adjacent_post(false, '', true);
 		$next     = get_adjacent_post(false, '', false);
@@ -482,9 +476,9 @@ if (!function_exists('n00b_content_pages')) {
 /**
  * Sidebar columns class
  */
-if (!function_exists('n00b_get_sidebar_col_class')) {
+if (!function_exists('n00b_get_col_class')) {
 	
-	function n00b_get_sidebar_col_class($sidebar_pos = '', $req, $req_cols = '', $req_last = '') {
+	function n00b_get_col_class($sidebar_pos = '', $req, $req_cols = '', $req_last = '') {
 		
 		if ('both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) {
 			$article_last       = '';
@@ -502,15 +496,23 @@ if (!function_exists('n00b_get_sidebar_col_class')) {
 			$sidebar_left_col  = 'col-md-3'. $sidebar_left_last;
 			$sidebar_right_col = 'col-md-3'. $sidebar_right_last;
 			$article_col       = 'col-md-6'. $article_last;
-		} else {
+		} else if ('left' === $sidebar_pos || 'right' === $sidebar_pos) {
 			$sidebar_left_col  = 'col-md-4';
 			$sidebar_right_col = 'col-md-4';
 			$article_col       = 'col-md-8';
+		} else if ('none' === $sidebar_pos) {
+			$sidebar_left_col  = '';
+			$sidebar_right_col = '';
+			$article_col       = 'col-md-12';
+		} else {
+			$sidebar_left_col  = '';
+			$sidebar_right_col = '';
+			$article_col       = 'col-md-12';
 		}
 		
-		if ($req == 'sidebar_left_col') return ($req_cols != '') ?  $req_cols.' '. $req_last : $sidebar_left_col;
-		if ($req == 'sidebar_right_col') return ($req_cols != '') ?  $req_cols.' '. $req_last : $sidebar_right_col;
-		if ($req == 'article_col') return ($req_cols != '') ?  $req_cols.' '. $req_last : $article_col;
+		if ($req == 'sidebar_left_col')  return ($req_cols != '') ? $req_cols.' '. $req_last : $sidebar_left_col;
+		if ($req == 'sidebar_right_col') return ($req_cols != '') ? $req_cols.' '. $req_last : $sidebar_right_col;
+		if ($req == 'article_col')       return ($req_cols != '') ? $req_cols.' '. $req_last : $article_col;
 		
 		return false;
 	}
@@ -518,8 +520,52 @@ if (!function_exists('n00b_get_sidebar_col_class')) {
 
 
 /**
- * Include custom functions file if it exists
+ * Get option
  */
-if (file_exists(get_template_directory() .'/includes/functions/functions-custom.php')) {
-	include_once get_template_directory() .'/includes/functions/functions-custom.php';
+if (!function_exists('n00b_get_option')) {
+
+	function n00b_get_option($option_name = '', $option_id = '', $object_id = 0, $args = array()) {
+		
+		extract($args);
+		
+		$prefix   = isset($metabox_prefix) ? $metabox_prefix : '';
+		$use_type = isset($use_type) ? $use_type : 'theme';
+		
+		if (!empty($option_name) && empty($option_id)) {
+			return class_exists('DilazPanel') ? DilazPanel::getOptions($option_name) : false;
+		} else if (!empty($option_name) && !empty($option_id) && $object_id === 0) {
+			return class_exists('DilazPanel') ? DilazPanel::getOption($option_name, $option_id) : false;
+		} else if (!empty($option_id) && !empty($object_id) && $object_id > 0) {
+			$metabox_setting = ($prefix != '') ? get_post_meta($object_id, $prefix.$option_id, true) : false;
+			return (($metabox_setting == 'default' || !$metabox_setting) && class_exists('DilazPanel')) ? DilazPanel::getOption($option_name, $option_id) : $metabox_setting;
+		}
+		
+		return false;
+	}
+}
+
+
+/**
+ * Get requested layout columns object
+ */
+if (!function_exists('n00b_req_col_object')) {
+	
+	function n00b_req_col_object($layout_cols = array()) {
+		
+		$req_cols_slc = isset($layout_cols['req_cols_slc']) ? $layout_cols['req_cols_slc'] : '';
+		$req_last_slc = isset($layout_cols['req_last_slc']) ? $layout_cols['req_last_slc'] : '';
+		$req_cols_src = isset($layout_cols['req_cols_src']) ? $layout_cols['req_cols_src'] : '';
+		$req_last_src = isset($layout_cols['req_last_src']) ? $layout_cols['req_last_src'] : '';
+		$req_cols_ac  = isset($layout_cols['req_cols_ac']) ? $layout_cols['req_cols_ac'] : '';
+		$req_last_ac  = isset($layout_cols['req_last_ac']) ? $layout_cols['req_last_ac'] : '';
+		
+		return array(
+			'req_cols_slc' => $req_cols_slc, 
+			'req_last_slc' => $req_last_slc, 
+			'req_cols_src' => $req_cols_src, 
+			'req_last_src' => $req_last_src, 
+			'req_cols_ac'  => $req_cols_ac, 
+			'req_last_ac'  => $req_last_ac
+		);
+	}
 }
