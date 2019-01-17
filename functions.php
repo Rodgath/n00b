@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Definitions
+ *
+ * @since 1.0
+ */
+defined('N00B_PROTOCAL') || define('N00B_PROTOCAL', is_ssl() ? 'https' : 'http');
 
 /**
  * Include custom functions file if it exists
@@ -9,7 +15,7 @@ if (file_exists(get_template_directory() .'/includes/functions/functions-custom.
 }
 
 /**
- * n00b functions and definitions
+ * n00b functions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
@@ -18,20 +24,9 @@ if (file_exists(get_template_directory() .'/includes/functions/functions-custom.
  * @since      1.0
  * @version    1.0
  */
- 
-require_once 'admin/admin.php';
-require_once 'metabox/metabox.php';
+require_once 'Dilaz-Panel-Options/admin.php';
+require_once 'Dilaz-Metaboxes-Options/metabox.php';
 require_once 'includes/functions/customizer.php';
-
-// $dilazPanelo = new DilazPanel();
-// $dilazPanelo = getOption('dilaz_options');
-// var_dump($dilazPanelo); exit;
-// $dilazPanelo->set_option('dilaz_options', $option_id, $option_value = false, $option_type = false)); exit;
-// $dilazPanelo->set_option('dilaz_options', 'texti', 'dadada', 'text');
-// $dilazPanelo->delete_option('dilaz_options', 'texti');
-// var_dump(DilazPanel::getOption('dilaz_options', 'texti')); exit;
-// var_dump(getOption('dilaz_options')); exit;
-// var_dump(DilazPanel::getOptions('dilaz_options')); exit;
 
 /**
  * Maximum allowed content width
@@ -42,11 +37,16 @@ if (!isset($content_width)) {
 
 /**
  * Theme setup
+ *
+ * @since 1.0
  */
 add_action('after_setup_theme', 'n00b_theme_setup');
 if (!function_exists('n00b_theme_setup')) {
 	
 	function n00b_theme_setup() {
+		
+		/* Hook before n00b theme setup */
+		do_action('n00b_before_theme_setup');
 		
 		/* Enable theme translation */
 		load_theme_textdomain('n00b', get_template_directory() . '/languages');
@@ -54,7 +54,7 @@ if (!function_exists('n00b_theme_setup')) {
 		/* Posts and comments feed links in head */
 		add_theme_support('automatic-feed-links');
 		
-		/* Featured images */
+		/* Image thumbnails */
 		add_theme_support('post-thumbnails');
 		
 		/* Post formats */
@@ -80,12 +80,16 @@ if (!function_exists('n00b_theme_setup')) {
 
 		/* TinyMCE editor custom stylesheet */
 		add_editor_style('/assets/css/editor-style.css');
+		
+		/* Hook after n00b theme setup */
+		do_action('n00b_after_theme_setup');
 	}
 }
 
-
 /**
  * Register widget areas
+ *
+ * @since 1.0
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
@@ -132,9 +136,10 @@ if (!function_exists('n00b_widgets_init')) {
 	}
 }
 
-
 /**
  * Add scripts
+ *
+ * @since 1.0
  */
 add_action('wp_enqueue_scripts', 'n00b_enqueue_assets', 100);
 if (!function_exists('n00b_enqueue_assets')) {
@@ -143,31 +148,34 @@ if (!function_exists('n00b_enqueue_assets')) {
 		
 		// STYLES
 		// ========================================================= //
-		
+			
+			/* Hook before n00b styles enqueue */
 			do_action('n00b_before_styles_enqueue');
 			
 			/* Bootstrap CSS */
-			wp_register_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '3.3.7');
+			wp_register_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '4.1.3');
 			wp_enqueue_style('bootstrap-css');
 			
 			/* Google fonts */
-			wp_enqueue_style('google-fonts', 'http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+			wp_enqueue_style('google-fonts', N00B_PROTOCAL . '://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
 			
 			/* n00b styles */
 			wp_register_style('n00b_css', get_template_directory_uri() . '/assets/css/style.css', '', '1.0');
 			wp_enqueue_style('n00b_css');
 			
-			/* Conditional styles - OPTIONAL */
+			/* Conditional styles for specific page - OPTIONAL */
 			if (is_page('pagenamehere')) {
 				wp_register_style('stylename', get_template_directory_uri() . '/assets/css/stylename.css', array(), '1.0');
 				wp_enqueue_style('stylename');
 			}
 			
+			/* Hook after n00b styles enqueue */
 			do_action('n00b_after_styles_enqueue');
 			
 		// SCRIPTS
 		// ========================================================= //
 			
+			/* Hook before n00b scripts enqueue */
 			do_action('n00b_before_scripts_enqueue');
 			
 			if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
@@ -196,19 +204,22 @@ if (!function_exists('n00b_enqueue_assets')) {
 				}
 			}
 			
+			/* Conditional scripts for specific page - OPTIONAL */
 			if (is_page('pagenamehere')) {
 				wp_register_script('scriptname', get_template_directory_uri() . '/assets/js/scriptname.js', array('jquery'), '1.0');
 				wp_enqueue_script('scriptname');
 			}
 			
+			/* Hook before n00b scripts enqueue */
 			do_action('n00b_after_scripts_enqueue');
 			
 	}
 }
 
-
 /**
  * n00b main menu navigation
+ *
+ * @since 1.0
  */
 if (!function_exists('n00b_main_nav')) {
 	
@@ -223,7 +234,7 @@ if (!function_exists('n00b_main_nav')) {
 			'menu_class'      => 'nav navbar-nav',
 			'menu_id'         => '',
 			'echo'            => true,
-			'fallback_cb'     => 'wp_page_menu', //'__return_false',
+			'fallback_cb'     => 'wp_page_menu', // '__return_false',
 			'before'          => '',
 			'after'           => '',
 			'link_before'     => '',
@@ -237,9 +248,10 @@ if (!function_exists('n00b_main_nav')) {
 	}
 }
 
-
 /**
  * n00b nav walker
+ *
+ * @since 1.0
  */
 if (!class_exists('n00b_nav_walker')) {
 	
@@ -294,7 +306,6 @@ if (!class_exists('n00b_nav_walker')) {
 		}
 	}
 }
-
 
 /**
  * Custom Comments Callback
@@ -363,7 +374,6 @@ if (!function_exists('n00b_comments')) {
 	}
 }
 
-
 /**
  * Update default form fields and add "required" span
  *
@@ -392,9 +402,10 @@ if (!function_exists('n00b_comment_form_default_fields')) {
 	}
 }
 
-
 /**
  * Display navigation to next/previous pages when applicable
+ *
+ * @since 1.0
  */
 if (!function_exists('n00b_adjacent_posts')) {
 	
@@ -422,9 +433,10 @@ if (!function_exists('n00b_adjacent_posts')) {
 	}
 }
 
-
 /**
  * Paginated link for archive post pages.
+ *
+ * @since 1.0
  */
 if (!function_exists('n00b_pages_navigation')) {
 	
@@ -455,10 +467,11 @@ if (!function_exists('n00b_pages_navigation')) {
 	}
 }
 
-
 /**
  * Displays page links for paginated posts (i.e. includes the <!--nextpage-->.
  * Quicktag one or more times). This tag must be within The Loop.
+ *
+ * @since 1.0
  */
 if (!function_exists('n00b_content_pages')) {
 	
@@ -472,55 +485,93 @@ if (!function_exists('n00b_content_pages')) {
 	}
 }
 
-
 /**
  * Sidebar columns class
+ *
+ * @since 1.0
  */
 if (!function_exists('n00b_get_col_class')) {
 	
-	function n00b_get_col_class($sidebar_pos = '', $req, $req_cols = '', $req_last = '') {
+	function n00b_get_col_class($sidebar_pos = '', $column_type, $custom_class = '') {
 		
 		if ('both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) {
-			$article_last       = '';
-			$sidebar_left_last  = '';
-			$sidebar_right_last = '';
+			
+			$article_last       = ' order-1 order-md-1 order-lg-2';
+			$sidebar_left_last  = ' order-2 order-md-2 order-lg-1';
+			$sidebar_right_last = ' order-3 order-md-3 order-lg-3';
 			if ('both_left' == $sidebar_pos) {
-				$article_last       = ' col-md-push-3';
-				$sidebar_left_last  = '';
-				$sidebar_right_last = ' col-md-pull-6';
+				$article_last       = ' order-1 order-md-1 order-lg-3';
+				$sidebar_left_last  = ' order-2 order-md-2 order-lg-1';
+				$sidebar_right_last = ' order-3 order-md-3 order-lg-2';
 			} else if ('both_right' == $sidebar_pos) {
-				$article_last       = ' col-md-pull-3';
-				$sidebar_left_last  = ' col-md-push-6';
+				$article_last       = ' order-1';
+				$sidebar_left_last  = ' order-2';
+				$sidebar_right_last = ' order-3';
+			}
+			
+			$sidebar_left_col  = 'col-12 col-md-8 col-lg-3'. $sidebar_left_last;
+			$sidebar_right_col = 'col-12 col-md-8 col-lg-3'. $sidebar_right_last;
+			$article_col       = 'col-12 col-md-8 col-lg-6'. $article_last;
+			
+		} else if ('left' === $sidebar_pos || 'right' === $sidebar_pos) {
+			
+			if ('left' === $sidebar_pos) {
+				$article_last       = ' order-1 order-md-1 order-lg-2';
+				$sidebar_left_last  = ' order-2 order-md-2 order-lg-1';
+				$sidebar_right_last = '';
+			} else {
+				$article_last       = '';
+				$sidebar_left_last  = '';
 				$sidebar_right_last = '';
 			}
-			$sidebar_left_col  = 'col-md-3'. $sidebar_left_last;
-			$sidebar_right_col = 'col-md-3'. $sidebar_right_last;
-			$article_col       = 'col-md-6'. $article_last;
-		} else if ('left' === $sidebar_pos || 'right' === $sidebar_pos) {
-			$sidebar_left_col  = 'col-md-4';
-			$sidebar_right_col = 'col-md-4';
-			$article_col       = 'col-md-8';
+			
+			$sidebar_left_col  = 'col-12 col-md-4'. $sidebar_left_last;
+			$sidebar_right_col = 'col-12 col-md-4'. $sidebar_right_last;
+			$article_col       = 'col-12 col-md-8'. $article_last;
+			
 		} else if ('none' === $sidebar_pos) {
+			
 			$sidebar_left_col  = '';
 			$sidebar_right_col = '';
-			$article_col       = 'col-md-12';
+			$article_col       = 'col-12';
+			
 		} else {
+			
 			$sidebar_left_col  = '';
 			$sidebar_right_col = '';
-			$article_col       = 'col-md-12';
+			$article_col       = 'col-12';
+			
 		}
 		
-		if ($req == 'sidebar_left_col')  return ($req_cols != '') ? $req_cols.' '. $req_last : $sidebar_left_col;
-		if ($req == 'sidebar_right_col') return ($req_cols != '') ? $req_cols.' '. $req_last : $sidebar_right_col;
-		if ($req == 'article_col')       return ($req_cols != '') ? $req_cols.' '. $req_last : $article_col;
+		if ($column_type == 'sidebar_left_col')  return ($custom_class != '') ? $custom_class : $sidebar_left_col;
+		if ($column_type == 'sidebar_right_col') return ($custom_class != '') ? $custom_class : $sidebar_right_col;
+		if ($column_type == 'article_col')       return ($custom_class != '') ? $custom_class : $article_col;
 		
 		return false;
 	}
 }
 
+/**
+ * Get requested layout columns object
+ *
+ * @since 1.0
+ */
+if (!function_exists('n00b_custom_col_class')) {
+	
+	function n00b_custom_col_class($layout_cols = array()) {
+		
+		return array(
+			'sl_custom_class' => isset($layout_cols['sl_custom_class']) ? $layout_cols['sl_custom_class'] : '',
+			'sr_custom_class' => isset($layout_cols['sr_custom_class']) ? $layout_cols['sr_custom_class'] : '', 
+			'a_custom_class'  => isset($layout_cols['a_custom_class']) ? $layout_cols['a_custom_class'] : ''
+		);
+	}
+}
 
 /**
  * Get option
+ *
+ * @since 1.0
  */
 if (!function_exists('n00b_get_option')) {
 
@@ -541,31 +592,5 @@ if (!function_exists('n00b_get_option')) {
 		}
 		
 		return false;
-	}
-}
-
-
-/**
- * Get requested layout columns object
- */
-if (!function_exists('n00b_req_col_object')) {
-	
-	function n00b_req_col_object($layout_cols = array()) {
-		
-		$req_cols_slc = isset($layout_cols['req_cols_slc']) ? $layout_cols['req_cols_slc'] : '';
-		$req_last_slc = isset($layout_cols['req_last_slc']) ? $layout_cols['req_last_slc'] : '';
-		$req_cols_src = isset($layout_cols['req_cols_src']) ? $layout_cols['req_cols_src'] : '';
-		$req_last_src = isset($layout_cols['req_last_src']) ? $layout_cols['req_last_src'] : '';
-		$req_cols_ac  = isset($layout_cols['req_cols_ac']) ? $layout_cols['req_cols_ac'] : '';
-		$req_last_ac  = isset($layout_cols['req_last_ac']) ? $layout_cols['req_last_ac'] : '';
-		
-		return array(
-			'req_cols_slc' => $req_cols_slc, 
-			'req_last_slc' => $req_last_slc, 
-			'req_cols_src' => $req_cols_src, 
-			'req_last_src' => $req_last_src, 
-			'req_cols_ac'  => $req_cols_ac, 
-			'req_last_ac'  => $req_last_ac
-		);
 	}
 }

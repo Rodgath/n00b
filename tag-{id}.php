@@ -2,6 +2,10 @@
 /**
  * The template for displaying specific tag archive using tag id
  *
+ * @param int {id} The tag id.
+ * 
+ * @example tag-4.php
+ *
  * @package    WordPress
  * @subpackage n00b
  * @since      1.1

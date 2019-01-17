@@ -2,6 +2,10 @@
 /**
  * The template for displaying specific category archive using category slug
  *
+ * @param string {slug} The category slug.
+ * 
+ * @example category-news.php
+ *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package    WordPress

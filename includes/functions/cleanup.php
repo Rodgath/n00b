@@ -13,10 +13,11 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0); // Remove rel=shortlink
 add_filter('style_loader_src', 'bones_remove_wp_ver_css_js', 9999); // remove WP version from css
 add_filter('script_loader_src', 'bones_remove_wp_ver_css_js', 9999); // remove Wp version from scripts
 
-/*
-Do not generate and display WordPress version
-*/
+
+/**
+ * Do not generate and display WordPress version
+ */
+add_filter('the_generator', 'no_generator');
 function no_generator()  { 
-    return ''; 
+	return ''; 
 }
-add_filter( 'the_generator', 'no_generator' );

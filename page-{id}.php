@@ -2,6 +2,10 @@
 /**
  * The page template for specific page id
  *
+ * @param int {id} The page id.
+ * 
+ * @example page-4.php
+ *
  * @package    WordPress
  * @subpackage n00b
  * @since      1.1

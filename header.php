@@ -13,70 +13,26 @@
  */
 
 ?><!DOCTYPE html>
-<html class="no-js">
+<html xmlns="<?php echo N00B_PROTOCAL; ?>://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head>
-	<title><?php wp_title('•', true, 'right'); bloginfo('name'); ?></title>
-	<meta charset="utf-8">
+
+	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<?php
-		// if (true == of_get_option('meta_author'))
-			// echo '<meta name="author" content="' . of_get_option("meta_author") . '" />';
-
-		// if (true == of_get_option('meta_google'))
-			// echo '<meta name="google-site-verification" content="' . of_get_option("meta_google") . '" />';
-	?>
-
 	<meta name="Copyright" content="Copyright &copy; <?php bloginfo('name'); ?> <?php echo date('Y'); ?>. All Rights Reserved.">
 	<title><?php wp_title('•', true, 'right'); bloginfo('name'); ?></title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php wp_title(); echo ' | '; bloginfo( 'description' ); ?>" />
-	<meta charset="<?php bloginfo( 'charset' ); ?>" />
-	
-	<?php //if(of_get_option('favicon') != ''){ ?>
-	<link rel="icon" href="<?php //echo of_get_option('favicon', '' ); ?>" type="image/x-icon" />
-	<?php //} else { ?>
+	<meta name="author" content="<?php bloginfo('name'); ?>">
 	<link rel="icon" href="<?php //echo CHILD_URL; ?>/favicon.ico" type="image/x-icon" />
-	<?php //} ?>
-	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?>" href="<?php bloginfo( 'rss2_url' ); ?>" />
-	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo( 'name' ); ?>" href="<?php bloginfo( 'atom_url' ); ?>" />
-	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?>" href="<?php bloginfo('rss2_url'); ?>" />
+	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?>" href="<?php bloginfo('atom_url'); ?>" />
+	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
-	<!-- Application-specific meta tags -->
-	<?php
-		// Windows 8
-		// if (true == of_get_option('meta_app_win_name')) {
-			// echo '<meta name="application-name" content="' . of_get_option("meta_app_win_name") . '" /> ';
-			// echo '<meta name="msapplication-TileColor" content="' . of_get_option("meta_app_win_color") . '" /> ';
-			// echo '<meta name="msapplication-TileImage" content="' . of_get_option("meta_app_win_image") . '" />';
-		// }
-		
-		// Twitter
-		// if (true == of_get_option('meta_app_twt_card')) {
-			// echo '<meta name="twitter:card" content="' . of_get_option("meta_app_twt_card") . '" />';
-			// echo '<meta name="twitter:site" content="' . of_get_option("meta_app_twt_site") . '" />';
-			// echo '<meta name="twitter:title" content="' . of_get_option("meta_app_twt_title") . '">';
-			// echo '<meta name="twitter:description" content="' . of_get_option("meta_app_twt_description") . '" />';
-			// echo '<meta name="twitter:url" content="' . of_get_option("meta_app_twt_url") . '" />';
-		// }
-		
-		// Facebook
-		// if (true == of_get_option('meta_app_fb_title')) {
-			// echo '<meta property="og:title" content="' . of_get_option("meta_app_fb_title") . '" />';
-			// echo '<meta property="og:description" content="' . of_get_option("meta_app_fb_description") . '" />';
-			// echo '<meta property="og:url" content="' . of_get_option("meta_app_fb_url") . '" />';
-			// echo '<meta property="og:image" content="' . of_get_option("meta_app_fb_image") . '" />';
-		// }
-	?>
 	
-	<?php wp_head(); ?>
+	<?php wp_head(); // do not delete this line ?>
 	
 </head>
 

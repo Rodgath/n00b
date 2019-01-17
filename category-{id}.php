@@ -2,6 +2,10 @@
 /**
  * The template for displaying specific category archive using category id
  *
+ * @param int {id} The category id.
+ * 
+ * @example category-1.php
+ *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package    WordPress

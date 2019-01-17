@@ -17,13 +17,13 @@
 
 get_header(); 
 
-$metabox_prefix = 'my_prefix_';
+$metabox_prefix = 'n00b_';
 $object_id = get_queried_object_id();
 $container = n00b_get_option('n00b_options', 'container_type', $object_id, $args = array('metabox_prefix' => $metabox_prefix));
 $sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', $object_id, $args = array('metabox_prefix' => $metabox_prefix));
 $layout_cols = get_post_meta($object_id, $metabox_prefix .'layout_cols', true);
 $layout_cols = (get_post_meta($object_id, $metabox_prefix .'sidebar_position', true) == 'default') ? n00b_get_option('n00b_options', 'layout_cols', $object_id) : $layout_cols;
-$layout_cols_object = n00b_req_col_object($layout_cols);
+$layout_cols_object = n00b_custom_col_class($layout_cols);
 extract($layout_cols_object);
 $sidebar_left_col = n00b_get_col_class($sidebar_pos, 'sidebar_left_col', $req_cols_slc, $req_last_slc);
 $sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col', $req_cols_src, $req_last_src);

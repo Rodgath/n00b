@@ -2,6 +2,10 @@
 /**
  * The template for displaying single custom post type post content
  *
+ * @param string {post_type} The post type.
+ * 
+ * @example single-post.php
+ *
  * @package    WordPress
  * @subpackage n00b
  * @since      1.1

@@ -2,6 +2,10 @@
 /**
  * The template for displaying specific tag archive using tag slug
  *
+ * @param string {slug} The tag slug.
+ * 
+ * @example tag-wordpress.php
+ *
  * @package    WordPress
  * @subpackage n00b
  * @since      1.1

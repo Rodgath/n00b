@@ -7,8 +7,8 @@
  * custom functions will be overwritten during
  * theme update
  *
- * @package WordPress
+ * @package    WordPress
  * @subpackage n00b
- * @since 1.0
- * @version 1.0
+ * @since      1.0
+ * @version    1.0
  */

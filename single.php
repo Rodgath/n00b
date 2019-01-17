@@ -11,15 +11,16 @@
  
 get_header(); 
 
-$container   = n00b_get_option('n00b_options', 'container_type', get_queried_object_id(), $args = array('metabox_prefix'=>'my_prefix_'));
-$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id(), $args = array('metabox_prefix'=>'my_prefix_'));
-$layout_cols = get_post_meta(get_queried_object_id(), 'my_prefix_layout_cols', true);
-$layout_cols = $layout_cols === '' ? n00b_get_option('n00b_options', 'layout_cols', get_queried_object_id(), $args = array('metabox_prefix'=>'my_prefix_')) : '';
-$layout_cols_object = n00b_req_col_object($layout_cols);
+$metabox_prefix = 'n00b_';
+$container   = n00b_get_option('n00b_options', 'container_type', get_queried_object_id(), array('metabox_prefix' => $metabox_prefix));
+$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id(), array('metabox_prefix' => $metabox_prefix));
+$meta_cols   = get_post_meta(get_queried_object_id(), $metabox_prefix .'layout_cols', true);
+$layout_cols = $meta_cols === '' ? n00b_get_option('n00b_options', 'layout_cols', get_queried_object_id(), array('metabox_prefix' => $metabox_prefix)) : '';
+$layout_cols_object = n00b_custom_col_class($layout_cols);
 extract($layout_cols_object);
-$sidebar_left_col  = n00b_get_col_class($sidebar_pos, 'sidebar_left_col', $req_cols_slc, $req_last_slc);
-$sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col', $req_cols_src, $req_last_src);
-$article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $req_cols_ac, $req_last_ac);
+$sidebar_left_col  = n00b_get_col_class($sidebar_pos, 'sidebar_left_col', $sl_custom_class);
+$sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col', $sr_custom_class);
+$article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_class);
 
 ?>
 

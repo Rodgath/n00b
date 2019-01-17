@@ -5,6 +5,11 @@
  * This is the custom post type embed template. If you edit the custom post type name,
  * you've got to change the name of this template to reflect that name change.
  *
+ * @param string {post_type}   The post type.
+ * @param string {post_format} The post format.
+ * 
+ * @example embed-post-audio.php
+ *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package    WordPress

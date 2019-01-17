@@ -2,6 +2,10 @@
 /**
  * The page template for specific page page_name
  *
+ * @param string {page_name} The page name.
+ * 
+ * @example page-about.php
+ *
  * @package    WordPress
  * @subpackage n00b
  * @since      1.1
