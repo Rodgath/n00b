@@ -1,7 +1,7 @@
 # n00b
 VERY SIMPLE WordPress starter theme for newbies and noobs.
 
-Feel free to use this starter theme in your premium and commercial projects.
+Feel free to use this starter theme in your __premium__ and __commercial__ projects.
 
 ## Features
 * Easy to use
