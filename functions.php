@@ -240,7 +240,7 @@ if (!function_exists('n00b_main_nav')) {
 			'link_before'     => '',
 			'link_after'      => '',
 			'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-			'depth'           => 2,
+			'depth'           => 3,
 			'walker'          => new n00b_nav_walker()
 		);
 		
