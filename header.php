@@ -20,7 +20,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="Copyright" content="Copyright &copy; <?php bloginfo('name'); ?> <?php echo date('Y'); ?>. All Rights Reserved.">
-	<title><?php wp_title('•', true, 'right'); bloginfo('name'); ?></title>
+	<title><?php wp_title('â€¢', true, 'right'); bloginfo('name'); ?></title>
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php wp_title(); echo ' | '; bloginfo( 'description' ); ?>" />
 	<meta name="author" content="<?php bloginfo('name'); ?>">
@@ -46,7 +46,7 @@
 
 		<?php if (has_nav_menu('main-menu')) { ?>
 
-			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+			<nav class="navbar navbar-expand-md" role="navigation">
 				<div class="container-fluid">
 					<div class="navbar-header">
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1-collapse">
