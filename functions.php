@@ -229,7 +229,7 @@ if (!function_exists('n00b_main_nav')) {
 			'theme_location'  => 'main-menu',
 			'menu'            => '',
 			'container'       => 'div',
-			'container_class' => 'navbar-collapse collapse',
+			'container_class' => 'collapse navbar-collapse',
 			'container_id'    => 'navbar',
 			'menu_class'      => 'nav navbar-nav',
 			'menu_id'         => '',
