@@ -7,8 +7,8 @@
 || @package		Dilaz Panel
 || @subpackage	Main Options
 || @since		Dilaz Panel 1.1
-|| @author		WebDilaz Team, http://webdilaz.com
-|| @copyright	Copyright (C) 2017, WebDilaz LTD
+|| @author		Rodgath, http://webdilaz.com
+|| @copyright	Copyright (C) 2017, Rodgath LTD
 || @link		http://webdilaz.com/panel
 || @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 || 

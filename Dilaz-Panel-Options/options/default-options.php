@@ -7,9 +7,9 @@
 || @package		Dilaz Panel
 || @subpackage	Default Options
 || @since		Dilaz Panel 1.1
-|| @author		WebDilaz Team, http://webdilaz.com
-|| @copyright	Copyright (C) 2017, WebDilaz LTD
-|| @link		http://webdilaz.com/panel
+|| @author		Rodgath, https://github.com/Rodgath
+|| @copyright	Copyright (C) 2017, Rodgath LTD
+|| @link		https://github.com/Rodgath/Dilaz-Panel-Plugin
 || @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 || 
 || NOTE 1: This file is for experimetation and demo purposes. Do not use this file to add your options, 
@@ -25,20 +25,28 @@ defined('ABSPATH') || exit;
 # MAIN TAB - General Settings
 # =============================================================================================
 $options[] = array(
+	'id'   => 'general-options',
 	'name' => __('General Options', 'dilaz-panel'),
 	'type' => 'heading',
-	'icon' => 'fa-cog'
+	'icon' => 'mdi-settings'
 );
 	
 	# SUB TAB - Simple Options Set
 	# *****************************************************************************************
 	// $options[] = array(
+		// 'id'   => 'general',
 		// 'name' => __('General', 'dilaz-panel'),
 		// 'type' => 'subheading',
 	// );
 		
 		# FIELDS - Alpha Tab 1
 		# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		$options[] = array(
+			'id'   => 'info',
+			'name' => __('Info Box Title', 'dilaz-panel'),
+			'desc' => __('Sample info description goes here.', 'dilaz-panel'),
+			'type' => 'info',
+		);
 		$options[] = array(
 			'id'   => 'range',
 			'name' => __('Range:', 'dilaz-panel'),
@@ -61,6 +69,12 @@ $options[] = array(
 			'args'  => array('min' => 8, 'max' => 100, 'step' => 2, 'suffix' => '%'),
 			'std'   => '40',
 			'class' => ''
+		);
+		$options[] = array(
+			'id'   => 'info',
+			'name' => __('Info Box Title', 'dilaz-panel'),
+			'desc' => __('Sample info description goes here.', 'dilaz-panel'),
+			'type' => 'info',
 		);
 		$options[] = array(
 			'id'   => 'switchenable',
@@ -193,14 +207,16 @@ $options[] = array(
 # MAIN TAB - Media Options
 # =============================================================================================
 $options[] = array(
+	'id'   => 'media-options',
 	'name' => __('Media Options', 'dilaz-panel'),
 	'type' => 'heading',
-	'icon' => 'fa-tv'
+	'icon' => 'mdi-monitor'
 );
 	
 	# SUB TAB - Image
 	# *****************************************************************************************
 	$options[] = array(
+		'id'   => 'image',
 		'name' => __('Image', 'dilaz-panel'),
 		'type' => 'subheading',
 	);
@@ -232,6 +248,7 @@ $options[] = array(
 	# SUB TAB - Audio
 	# *****************************************************************************************
 	$options[] = array(
+		'id'   => 'audio',
 		'name' => __('Audio', 'dilaz-panel'),
 		'type' => 'subheading',
 	);
@@ -263,6 +280,7 @@ $options[] = array(
 	# SUB TAB - Video
 	# *****************************************************************************************
 	$options[] = array(
+		'id'   => 'video',
 		'name' => __('Video', 'dilaz-panel'),
 		'type' => 'subheading',
 	);
@@ -294,14 +312,16 @@ $options[] = array(
 # MAIN TAB - Color Options
 # =============================================================================================
 $options[] = array(
+	'id'   => 'color-options',
 	'name' => __('Color Options', 'dilaz-panel'),
 	'type' => 'heading',
-	'icon' => 'fa-paint-brush'
+	'icon' => 'mdi-format-color-fill'
 );
 	
 	# SUB TAB - Color
 	# *****************************************************************************************
 	// $options[] = array(
+		// 'id'   => 'color',
 		// 'name' => __('Color', 'dilaz-panel'),
 		// 'type' => 'subheading',
 	// );
@@ -345,16 +365,18 @@ $options[] = array(
 # MAIN TAB - General Settings
 # =============================================================================================
 $options[] = array(
+	'id'   => 'repeatable-options',
 	'name' => __('Repeatable Options', 'dilaz-panel'),
 	'type' => 'heading',
-	'icon' => 'fa-align-justify'
+	'icon' => 'mdi-view-list'
 );
 	
 	# TAB - Repeatable Options Set
 	# *****************************************************************************************
 	// $options[] = array(
+		// 'id'   => '',
 		// 'name' => __('', 'dilaz-panel'),
-		// 'type'  => 'metabox_tab'
+		// 'type'  => 'subheading'
 	// );
 		
 		# FIELDS - Alpha Tab 1
@@ -517,14 +539,16 @@ $options[] = array(
 # MAIN TAB - Typography Options
 # =============================================================================================
 $options[] = array(
+	'id'   => 'typography-options',
 	'name' => __('Typography Options', 'dilaz-panel'),
 	'type' => 'heading',
-	'icon' => 'fa-font'
+	'icon' => 'mdi-format-font'
 );
 	
 	# SUB TAB - Typography
 	# *****************************************************************************************
 	// $options[] = array(
+		// 'id'   => 'typography',
 		// 'name' => __('Typography', 'dilaz-panel'),
 		// 'type' => 'subheading',
 	// );
@@ -589,14 +613,16 @@ $options[] = array(
 # MAIN TAB - Choice Options
 # =============================================================================================
 $options[] = array(
+	'id'   => 'choice-options',
 	'name' => __('Choice Options', 'dilaz-panel'),
 	'type' => 'heading',
-	'icon' => 'fa-sliders'
+	'icon' => 'mdi-tune'
 );
 	
 	# SUB TAB - Choice
 	# *****************************************************************************************
 	// $options[] = array(
+		// 'id'   => 'choice',
 		// 'name' => __('Choice', 'dilaz-panel'),
 		// 'type' => 'subheading',
 	// );
@@ -836,14 +862,16 @@ $options[] = array(
 # TAB - Conditionals
 # =============================================================================================
 $options[] = array(
+	'id'   => 'conditionals',
 	'name' => __('Conditionals', 'dilaz-panel'),
 	'type' => 'heading',
-	'icon' => 'fa-toggle-on'
+	'icon' => 'mdi-toggle-switch'
 );
 	
 	# SUB TAB - Conditionals
 	# *****************************************************************************************
 	// $options[] = array(
+		// 'id'   => 'conditionals',
 		// 'name' => __('Conditionals', 'dilaz-panel'),
 		// 'type' => 'subheading',
 	// );

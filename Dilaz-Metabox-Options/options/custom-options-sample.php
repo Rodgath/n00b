@@ -7,14 +7,14 @@
 || @package		Dilaz Metabox
 || @subpackage	Custom Options
 || @since		Dilaz Metabox 1.1
-|| @author		WebDilaz Team, http://webdilaz.com
-|| @copyright	Copyright (C) 2017, WebDilaz LTD
-|| @link		http://webdilaz.com/metaboxes
+|| @author		Rodgath, https://github.com/Rodgath
+|| @copyright	Copyright (C) 2017, Rodgath LTD
+|| @link		https://github.com/Rodgath/Dilaz-Metabox-Plugin
 || @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 || 
 || NOTE 1: Rename this file from "custom-options-sample.php" to "custom-options.php". If you
 ||         don't rename it, all your options and settings will be overwritten
-||         when updating Dilaz Metabox.
+||         when updating Dilaz Metabox Options.
 || 
 || NOTE 2: Add all your theme/plugin custom options in this file
 || 
@@ -50,7 +50,7 @@ add_filter('metabox_option_filter_'. $prefix, function($dilaz_meta_boxes, $prefi
 		$dilaz_meta_boxes[] = array(
 			'id'    =>  $prefix .'custom_options',
 			'title' => __('Custom Options', 'dilaz-metabox'),
-			'icon'  => 'fa-bell-o',
+			'icon'  => 'mdi-bell',
 			'type'  => 'metabox_tab'
 		);
 			

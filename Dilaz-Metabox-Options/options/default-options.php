@@ -7,9 +7,9 @@
 || @package		Dilaz Metabox
 || @subpackage	Default Options
 || @since		Dilaz Metabox 1.0
-|| @author		WebDilaz Team, http://webdilaz.com
-|| @copyright	Copyright (C) 2017, WebDilaz LTD
-|| @link		http://webdilaz.com/metaboxes
+|| @author		Rodgath, https://github.com/Rodgath
+|| @copyright	Copyright (C) 2017, Rodgath LTD
+|| @link		https://github.com/Rodgath/Dilaz-Metabox-Plugin
 || @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 || 
 */
@@ -33,7 +33,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'simple_options',
 		'title' => __('Simple Options', 'dilaz-metabox'),
-		'icon'  => 'fa-cog',
+		'icon'  => 'mdi-settings',
 		'type'  => 'metabox_tab'
 	);
 		
@@ -210,9 +210,9 @@ $dilaz_meta_boxes[] = array(
 			'desc'  => __('Description 1.', 'dilaz-metabox'),
 			'desc2' => __('Description 2.', 'dilaz-metabox'),
 			'type'  => 'paragraph',
-			'value' => 'Your privacy is important to us. We at ThemeDilaz, have created this privacy policy to demonstrate our firm commitment to protecting your personal information and informing you about how we handle it. 
+			'value' => 'Your privacy is important to us. We at CompanyNAME, have created this privacy policy to demonstrate our firm commitment to protecting your personal information and informing you about how we handle it. 
 			
-			This privacy policy only applies to transactions and activities in which you engage, and data gathered, on the ThemeDilaz Website. Please review this privacy policy periodically as we may modify it from time to time. 
+			This privacy policy only applies to transactions and activities in which you engage, and data gathered, on the CompanyNAME Website. Please review this privacy policy periodically as we may modify it from time to time. 
 			
 			Each time you visit the Site or provide us with information, by doing so you are accepting the practices described in this privacy policy at that time.',
 		);
@@ -296,7 +296,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'repeatable_fields',
 		'title' => __('Repeatable Options', 'dilaz-metabox'),
-		'icon'  => 'fa-align-justify',
+		'icon'  => 'mdi-view-list',
 		'type'  => 'metabox_tab'
 	);
 		$dilaz_meta_boxes[] = array(
@@ -459,7 +459,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'media_options',
 		'title' => __('Media Options', 'dilaz-metabox'),
-		'icon'  => 'fa-tv',
+		'icon'  => 'mdi-monitor',
 		'type'  => 'metabox_tab'
 	);
 		
@@ -540,7 +540,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'date_options',
 		'title' => __('Date Options', 'dilaz-metabox'),
-		'icon'  => 'fa-calendar',
+		'icon'  => 'mdi-calendar',
 		'type'  => 'metabox_tab'
 	);
 		
@@ -676,7 +676,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'color_options',
 		'title' => __('Color Options', 'dilaz-metabox'),
-		'icon'  => 'fa-paint-brush',
+		'icon'  => 'mdi-format-color-fill',
 		'type'  => 'metabox_tab'
 	);
 		
@@ -710,7 +710,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'choice_options',
 		'title' => __('Choice Options', 'dilaz-metabox'),
-		'icon'  => 'fa-sliders',
+		'icon'  => 'mdi-tune',
 		'type'  => 'metabox_tab'
 	);
 	
@@ -967,7 +967,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'editor_options',
 		'title' => __('Editor Options', 'dilaz-metabox'),
-		'icon'  => 'fa-bold',
+		'icon'  => 'mdi-square-edit-outline',
 		'type'  => 'metabox_tab'
 	);
 		
@@ -993,7 +993,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'conditionals',
 		'title' => __('Conditionals', 'dilaz-metabox'),
-		'icon'  => 'fa-toggle-on',
+		'icon'  => 'mdi-toggle-switch',
 		'type'  => 'metabox_tab'
 	);
 		
@@ -1141,7 +1141,7 @@ $dilaz_meta_boxes[] = array(
 	$dilaz_meta_boxes[] = array(
 		'id'    => $prefix .'beta_tab_1',
 		'title' => __('Beta Tab 1', 'dilaz-metabox'),
-		'icon'  => 'fa-anchor',
+		'icon'  => 'mdi-anchor',
 		'type'  => 'metabox_tab'
 	);
 		

@@ -4,35 +4,33 @@
 || Admin Panel Config
 || --------------------------------------------------------------------------------------------
 ||
-|| @package		Dilaz Panel
-|| @subpackage	Config
-|| @version		2.4.1
-|| @since		Dilaz Panel 1.0
-|| @author		Rodgath, http://webdilaz.com
-|| @copyright	Copyright (C) 2017, Rodgath LTD
-|| @link		http://webdilaz.com/panel
-|| @License		GPL-2.0+
-|| @License URI	http://www.gnu.org/licenses/gpl-2.0.txt
+|| @package     Dilaz Panel Options
+|| @subpackage  Config
+|| @since       Dilaz Panel 2.4.1
+|| @author      Rodgath, https://github.com/Rodgath
+|| @copyright   Copyright (C) 2017, Rodgath LTD
+|| @link        https://github.com/Rodgath/Dilaz-Panel-Plugin
+|| @License     GPL-2.0+
+|| @License URI http://www.gnu.org/licenses/gpl-2.0.txt
 || 
-|| NOTE 2: Rename this file from "config-sample.php" to "config.php". If you
-||       don't rename it, all your config and settings will be overwritten
+|| NOTE: Rename this file from "config-sample.php" to "config.php". If you
+||       don't rename it, all your config parameters will be overwritten
 ||       when updating Dilaz Panel Options.
 || 
 */
 
 defined('ABSPATH') || exit;
 
-
 # Option parameters
 $parameters = array(
-	'option_name'      => 'n00b_options', # must be unique. Used to save settings.
-	'option_prefix'    => 'n00b_panel', # must be unique. Not used to save settings.
+	'option_name'      => 'dilaz_options', # must be unique. Used to save settings.
+	'option_prefix'    => 'dilaz_panel', # must be unique. Not used to save settings.
 	'use_type'         => 'theme', # 'theme' if used within a theme OR 'plugin' if used within a plugin
-	'default_options'  => false, # whether to load default options. Always set to "false" on a live site.
-	'custom_options'   => false, # whether to load custom options. Always set to "false" on a live site.
-	'page_slug'        => 'n00b_panel', # should be unique.
-	'page_title'       => __('n00b Panel', 'dilaz-panel'), # The text to be displayed in the title tags of the page when the menu is selected.
-	'menu_title'       => __('n00b Panel', 'dilaz-panel'), # The text to be used for the menu.
+	'default_options'  => true, # whether to load default options. Always set to "false" on a live site.
+	'custom_options'   => true, # whether to load custom options. Always set to "false" on a live site.
+	'page_slug'        => 'dilaz_panel', # should be unique.
+	'page_title'       => __('Dilaz Panel', 'dilaz-panel'), # The text to be displayed in the title tags of the page when the menu is selected.
+	'menu_title'       => __('Dilaz Panel', 'dilaz-panel'), # The text to be used for the menu.
 	'options_view_cap' => array('manage_options'), # The capabilities required for this menu to be displayed to the user.
 	'options_save_cap' => array('manage_options'), # The capabilities required for the user to save the options for this panel.
 	'menu_icon'        => '', # dashicon menu icon.
