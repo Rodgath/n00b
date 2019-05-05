@@ -231,7 +231,7 @@ if (!function_exists('n00b_main_nav')) {
 			'container'       => 'div',
 			'container_class' => 'collapse navbar-collapse',
 			'container_id'    => 'navbar',
-			'menu_class'      => 'nav navbar-nav',
+			'menu_class'      => 'navbar-nav ml-auto',
 			'menu_id'         => '',
 			'echo'            => true,
 			'fallback_cb'     => 'wp_page_menu', // '__return_false',
