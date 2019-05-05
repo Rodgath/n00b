@@ -18,7 +18,7 @@
 
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="Copyright" content="Copyright &copy; <?php bloginfo('name'); ?> <?php echo date('Y'); ?>. All Rights Reserved.">
 	<title><?php wp_title('•', true, 'right'); bloginfo('name'); ?></title>
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,51 +39,51 @@
 <body <?php body_class(); ?>>
 
 <!-- START wrapper -->
-<div class="wrapper">
+<div class="wrapper container">
 
-<!-- START header -->
-<header id="header" class="header" role="banner">
+	<!-- START header -->
+	<header id="header" class="header" role="banner">
 
-	<?php if (has_nav_menu('main-menu')) { ?>
+		<?php if (has_nav_menu('main-menu')) { ?>
 
-		<nav class="navbar navbar-default navbar-static-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1-collapse">
-						<span class="sr-only"><?php _e('Toggle navigation', 'n00b'); ?></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class="logo">
-						<?php if (!has_custom_logo()) { ?>
-							<a class="navbar-brand" href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
-								<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>">
-							</a>
-						<?php } else {
-							the_custom_logo();
-						} ?>
+			<nav class="navbar navbar-default navbar-static-top" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1-collapse">
+							<span class="sr-only"><?php _e('Toggle navigation', 'n00b'); ?></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<div class="logo">
+							<?php if (!has_custom_logo()) { ?>
+								<a class="navbar-brand" href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
+									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>">
+								</a>
+							<?php } else {
+								the_custom_logo();
+							} ?>
+						</div>
 					</div>
+					<?php n00b_main_nav(); ?>
 				</div>
-				<?php n00b_main_nav(); ?>
-			</div>
-		</nav>
+			</nav>
+			
+		<?php } ?>
 		
-	<?php } ?>
-	
-</header>
-<!-- END #header -->
+	</header>
+	<!-- END #header -->
 
-<!-- START main -->
-<main role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+	<!-- START main -->
+	<main role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
-	<!-- START breadcrumb -->
-	<section id="breadcrumb">
-		<div class="container">
-			<div class="row">
-				
+		<!-- START breadcrumb -->
+		<section id="breadcrumb">
+			<div class="container-fluid">
+				<div class="row">
+					
+				</div>
 			</div>
-		</div>
-	</section>
-	<!-- END #breadcrumb -->
-	
+		</section>
+		<!-- END #breadcrumb -->
+		

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Definitions
+ * Constants
  *
  * @since 1.0
  */
@@ -25,7 +25,7 @@ if (file_exists(get_template_directory() .'/includes/functions/functions-custom.
  * @version    1.0
  */
 require_once 'Dilaz-Panel-Options/admin.php';
-require_once 'Dilaz-Metaboxes-Options/metabox.php';
+require_once 'Dilaz-Metabox-Options/metabox.php';
 require_once 'includes/functions/customizer.php';
 
 /**
@@ -146,8 +146,8 @@ if (!function_exists('n00b_enqueue_assets')) {
 	
 	function n00b_enqueue_assets() {
 		
-		// STYLES
-		// ========================================================= //
+		/* STYLES
+		 * ========================================================= */
 			
 			/* Hook before n00b styles enqueue */
 			do_action('n00b_before_styles_enqueue');
@@ -171,9 +171,9 @@ if (!function_exists('n00b_enqueue_assets')) {
 			
 			/* Hook after n00b styles enqueue */
 			do_action('n00b_after_styles_enqueue');
-			
-		// SCRIPTS
-		// ========================================================= //
+		
+		/* SCRIPTS
+		 * ========================================================= */
 			
 			/* Hook before n00b scripts enqueue */
 			do_action('n00b_before_scripts_enqueue');

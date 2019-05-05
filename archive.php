@@ -23,7 +23,7 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col');
 
 	<!-- START Title section -->
 	<section id="title">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<?php if (is_category()) { ?>
 					<h1><?php _e('Posts Categorized:', 'n00b'); ?> <?php single_cat_title(); ?></h1>
@@ -46,7 +46,7 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col');
 
 	<!-- START Content section -->
 	<section id="content">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
 				
