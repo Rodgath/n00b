@@ -63,6 +63,38 @@ textarea {
 /*-----------------------------------------------------------------------------------*/
 
 
+.n00b-menu li > a {
+    padding: 10px 15px;
+    color: #000;
+}
+
+.n00b-menu.active a:focus,
+.n00b-menu li a:focus ,
+.navbar > .show > a:focus{
+    /* background: transparent; */
+    outline: 0;
+}
+
+.n00b-menu .dropdown-menu {
+	padding: 0;
+	margin: 0;
+	border-radius: 0
+}
+
+.n00b-menu .dropdown-menu .show > .dropdown-toggle::after{
+    transform: rotate(-90deg);
+}
+
+.navbar-nav li:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+    /* Without this, clicking will make it sticky */
+    pointer-events: none;
+}
+
+
 /*-----------------------------------------------------------------------------------*/
 /*	05.	Main Content
 /*-----------------------------------------------------------------------------------*/
