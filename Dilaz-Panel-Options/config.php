@@ -8,9 +8,9 @@
 || @subpackage	Config
 || @version		2.4.1
 || @since		Dilaz Panel 1.0
-|| @author		Rodgath, http://webdilaz.com
+|| @author		Rodgath, https://github.com/Rodgath
 || @copyright	Copyright (C) 2017, Rodgath LTD
-|| @link		http://webdilaz.com/panel
+|| @link		https://github.com/Rodgath/Dilaz-Panel-Plugin
 || @License		GPL-2.0+
 || @License URI	http://www.gnu.org/licenses/gpl-2.0.txt
 || 
