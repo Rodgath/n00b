@@ -20,7 +20,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="Copyright" content="Copyright &copy; <?php bloginfo('name'); ?> <?php echo date('Y'); ?>. All Rights Reserved.">
-	<title><?php wp_title('â€¢', true, 'right'); bloginfo('name'); ?></title>
+	<title><?php wp_title('•', true, 'right'); bloginfo('name'); ?></title>
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php wp_title(); echo ' | '; bloginfo( 'description' ); ?>" />
 	<meta name="author" content="<?php bloginfo('name'); ?>">
@@ -46,24 +46,21 @@
 
 		<?php if (has_nav_menu('main-menu')) { ?>
 
-			<nav class="navbar navbar-expand-md" role="navigation">
+			<nav class="navbar navbar-expand-md n00b-menu" role="navigation">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-1-collapse">
-							<span class="sr-only"><?php _e('Toggle navigation', 'n00b'); ?></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<div class="logo">
+						<div class="navbar-brand logo">
 							<?php if (!has_custom_logo()) { ?>
 								<a class="navbar-brand" href="<?php echo home_url('/'); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home">
-									<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>">
+									<img height="30" src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>">
 								</a>
 							<?php } else {
 								the_custom_logo();
 							} ?>
 						</div>
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="<?php _e('Toggle navigation', 'n00b'); ?>">
+							<span class="navbar-toggler-icon"></span>
+						</button>
 					</div>
 					<?php n00b_main_nav(); ?>
 				</div>

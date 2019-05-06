@@ -184,19 +184,20 @@ if (!function_exists('n00b_enqueue_assets')) {
 				wp_enqueue_script('jquery');
 				
 				/* Modernizr */
-				wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/modernizr.min.js', false, null, true);
-				wp_enqueue_script('modernizr');
+				// wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/modernizr.min.js', false, null, true);
+				// wp_enqueue_script('modernizr');
 
 				/* Bootstrap */
 				wp_register_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js', false, '4.0.0.alpha5', true);
 				wp_enqueue_script('bootstrap-js');
 
 				/* Bootstrap Demo */
-				wp_register_script('bootstrap-demo', get_template_directory_uri() . '/assets/js/bootstrap.demo.js', false, null, true);
-				wp_enqueue_script('bootstrap-demo');
+				// wp_register_script('bootstrap-demo', get_template_directory_uri() . '/assets/js/bootstrap.demo.js', false, null, true);
+				// wp_enqueue_script('bootstrap-demo');
 			
 				/* n00b scripts */
-				wp_register_script('n00b-js', get_template_directory_uri() . '/assets/js/scripts.js', array('modernizr', 'jquery'), '1.0');
+				// wp_register_script('n00b-js', get_template_directory_uri() . '/assets/js/scripts.js', array('modernizr', 'jquery'), '1.0');
+				wp_register_script('n00b-js', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0');
 				wp_enqueue_script('n00b-js');
 				
 				if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -232,7 +233,7 @@ if (!function_exists('n00b_main_nav')) {
 			'container_class' => 'collapse navbar-collapse',
 			'container_id'    => 'navbar',
 			'menu_class'      => 'navbar-nav ml-auto',
-			'menu_id'         => '',
+			'menu_id'         => 'main-menu',
 			'echo'            => true,
 			'fallback_cb'     => 'wp_page_menu', // '__return_false',
 			'before'          => '',
@@ -260,7 +261,7 @@ if (!class_exists('n00b_nav_walker')) {
 		function start_lvl( &$output, $depth = 0, $args = array() ) { // ul
 			$indent  = str_repeat("\t",$depth); // indents the outputted HTML
 			$submenu = ($depth > 0) ? ' sub-menu' : '';
-			$output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\">\n";
+			$output .= "\n$indent<ul class=\"dropdown-menu$submenu depth_$depth\" data-depth=\"$depth\">\n";
 		}
 		
 		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) { // li a span
@@ -277,7 +278,7 @@ if (!class_exists('n00b_nav_walker')) {
 			$classes[] = 'nav-item';
 			$classes[] = 'nav-item-' . $item->ID;
 			if( $depth && $args->walker->has_children ){
-				$classes[] = 'dropdown-menu';
+				// $classes[] = 'dropdown-menu';
 			}
 			
 			$class_names =  join(' ', apply_filters('nav_menu_css_class', array_filter( $classes ), $item, $args ) );
@@ -293,10 +294,18 @@ if (!class_exists('n00b_nav_walker')) {
 			$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
 			$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr($item->url) . '"' : '';
 			
-			$attributes .= ( $args->walker->has_children ) ? ' class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="nav-link"';
+			$attributes .= ( $args->walker->has_children ) ? ' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : '';
 			
 			$item_output = $args->before;
-			$item_output .= ( $depth > 0 ) ? '<a class="dropdown-item"' . $attributes . '>' : '<a' . $attributes . '>';
+			if ( $depth > 0 && $args->walker->has_children ) {
+				$item_output .= '<a class="dropdown-item dropdown-toggle" ' . $attributes . '>';
+			} else {
+				if ( $depth == 0 && $args->walker->has_children ) {
+					$item_output .= '<a class="dropdown-item dropdown-toggle" ' . $attributes . '>';
+				} else {
+					$item_output .= '<a class="dropdown-item" ' . $attributes . '>';
+				}
+			}
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= '</a>';
 			$item_output .= $args->after;
