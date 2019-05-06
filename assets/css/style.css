@@ -13,6 +13,8 @@
 	11.	Widgets
 	12.	Widgets
 	13.	Sortcodes
+	14.	Gallery
+	15.	Print
 
 -----------------------------------------------------------------------------------*/
 
@@ -23,30 +25,36 @@
 
 
 /*-----------------------------------------------------------------------------------*/
-/*	02.	Document Setup (body, common classes, vertical rhythm, structure etc)
+/*	02.	Document Setup (body, common classes, vertical rhythm, structure, utilities etc)
 /*-----------------------------------------------------------------------------------*/
 body {
 	background:url(images/body_bg.gif) repeat;
 	margin: 0;
 	padding: 0;
 }
+
 body,
 input,
 textarea {
 	/* font: 12px/20px "Helvetica Neue", Helvetica, Arial, sans-serif; */
 	color: #999;
 }
-.hidden { display: none; }
-.alignleft { float: left; }
-.alignright { float: right; }
-.aligncenter {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+
+.wrapper {
+	margin: 0 auto;
+	position: relative;
+}
+
+/* Utilities */
+.clear:before, 
+.clear:after {
+	content: " ";
+	display: table;
+}
+
+.clear:after {
 	clear: both;
 }
-.left { float: left }
-.right { float: right }
 
 /*-----------------------------------------------------------------------------------*/
 /*	03.	Header
@@ -54,6 +62,7 @@ textarea {
 .logo {
 
 }
+
 .navbar-brand > img {
     height: 100%
 }
@@ -61,8 +70,6 @@ textarea {
 /*-----------------------------------------------------------------------------------*/
 /*	04.	Navigation & Menus
 /*-----------------------------------------------------------------------------------*/
-
-
 .n00b-menu li > a {
     padding: 10px 15px;
     color: #000;
@@ -161,37 +168,9 @@ div[class^="comment-form-"] textarea[name="comment"] {
 /*-----------------------------------------------------------------------------------*/
 
 
-
-
- 
-/**
- * partials/wordpress
- * ---
- * Wordpess core classes
- */
-/**
- * Alignment
- */
-.alignnone {
-	margin: 5px 15px 15px 0;
-}
-.aligncenter {
-	display: block;
-	margin: 5px auto;
-}
-.alignright {
-	float: right;
-	margin: 5px 0 20px 20px;
-	margin: 5px 0 15px 15px;
-}
-.alignleft {
-	float: left;
-	margin: 5px 15px 15px 0;
-}
-
-/**
- * Gallery & images
- */
+/*-----------------------------------------------------------------------------------*/
+/*	14.	Gallery
+/*-----------------------------------------------------------------------------------*/
 .wp-caption {
 	background: white;
 	border: thin solid #F0F0F0;
@@ -216,107 +195,67 @@ div[class^="comment-form-"] textarea[name="comment"] {
 	line-height: 1.5;
 }
 
-/**
- * partials/utils
- * ---
- * Utils classes
- */
-.clear:before, 
-.clear:after {
-	content: " ";
-	display: table;
-}
-.clear:after {
-	clear: both;
-}
-.reset-box {
-	padding: 0;
-	margin: 0;
-}
 
-/**
- * partials/wrapper
- * ---
- */
-.wrapper {
-	margin: 0 auto;
-	position: relative;
-}
 
+ 
 /**
- * partial/header
+ * partials/wordpress
  * ---
+ * Wordpess core classes
  */
-/**
- * partials/nav
- * ---
- * Menus
- */
-/**
- * partials/sidebar
- * ---
- */
-/**
- * partials/footer
- * ---
- */
-/**
- * partials/print
- * ---
- * Print version
- * (from https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css)
- */
+ 
+
+
+
+ 
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	15.	Print
+/*	@link - https://github.com/h5bp/main.css/blob/master/dist/_print.css
+/*-----------------------------------------------------------------------------------*/
 @media print {
-	*,
-	*:before,
-	*:after {
-		background: transparent !important;
-		color: #000 !important;
-		/* Black prints faster: h5bp.com/s */
-		box-shadow: none !important;
-		text-shadow: none !important;
+	*,*:before,*:after {
+		background:transparent !important;
+		color:#000 !important;
+		/* Black prints faster */
+		-webkit-box-shadow:none !important;
+		box-shadow:none !important;
+		text-shadow:none !important;
 	}
-	a,
-	a:visited {
-		text-decoration: underline;
+	a,a:visited {
+		text-decoration:underline;
 	}
 	a[href]:after {
-		content: " (" attr(href) ")";
+		content:" (" attr(href) ")";
 	}
 	abbr[title]:after {
 		content: " (" attr(title) ")";
 	}
-	/*
-	* Don't show links that are fragment identifiers,
-	* or use the `javascript:` pseudo protocol
-	*/
-	a[href^="#"]:after,
-	a[href^="javascript:"]:after {
-		content: "";
+	/* * Don't show links that are fragment identifiers,* or use the `javascript:` pseudo protocol */
+	a[href^="#"]:after,a[href^="javascript:"]:after {
+		content:"";
 	}
-	pre,
-	blockquote {
-		border: 1px solid #999;
+	pre {
+		white-space:pre-wrap !important;
+	}
+	pre,blockquote {
+		border:1px solid #999;
 		page-break-inside: avoid;
 	}
+	/* * Printing Tables:* http://css-discuss.incutio.com/wiki/Printing_Tables */
 	thead {
-		display: table-header-group;
-		/* h5bp.com/t */
+		display:table-header-group;
 	}
-	tr,
-	img {
-		page-break-inside: avoid;
+	tr,img {
+		page-break-inside:avoid;
 	}
-	img {
-		max-width: 100% !important;
+	p,h2,h3 {
+		orphans:3;
+		widows:3;
 	}
-	p,
-	h2,
-	h3 {
-		orphans: 3;
-		widows: 3;
-	}
-	h3 {
+	h2,h3 {
 		page-break-after: avoid;
 	}
 }
