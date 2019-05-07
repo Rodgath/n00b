@@ -22,7 +22,7 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col');
 ?>
 
 	<!-- START Title section -->
-	<section id="title">
+	<section id="title" class="mb-3">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">

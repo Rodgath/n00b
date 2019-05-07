@@ -21,7 +21,7 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', 'col-md-8',
 ?>
 
 	<!-- START Title section -->
-	<section id="title">
+	<section id="title" class="mb-3">
 		<div class="container">
 			<div class="row">
 				<h1><?php _e('Error', 'n00b'); ?> 404</h1>
