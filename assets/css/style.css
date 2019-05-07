@@ -1,5 +1,6 @@
 /*-----------------------------------------------------------------------------------
-
+	T A B L E   O F   C O N T E N T S
+	---------------------------------------------------------------------------------
 	01.	CSS Reset & Clearfix
 	02.	Document Setup (body, common classes, vertical rhythm, structure etc)
 	03.	Header
@@ -33,11 +34,9 @@ body {
 	padding: 0;
 }
 
-body,
 input,
 textarea {
-	/* font: 12px/20px "Helvetica Neue", Helvetica, Arial, sans-serif; */
-	color: #999;
+	color: #888;
 }
 
 .wrapper {
@@ -71,7 +70,7 @@ textarea {
 /*	04.	Navigation & Menus
 /*-----------------------------------------------------------------------------------*/
 .n00b-menu li > a {
-    padding: 10px 15px;
+    padding: 10px 25px 10px 15px;
     color: #000;
 }
 
@@ -88,17 +87,33 @@ textarea {
 	border-radius: 0
 }
 
+.n00b-menu .dropdown-toggle::after{
+  position: absolute;
+  right: 10px;
+	top: 50%
+}
+
 .n00b-menu .dropdown-menu .show > .dropdown-toggle::after{
-    transform: rotate(-90deg);
+    transform: rotate(-90deg)
+}
+
+.navbar-nav li:hover > a {
+	position: relative;
+	background-color: #f8f9fa;
+	color: #000
 }
 
 .navbar-nav li:hover > .dropdown-menu {
-  display: block;
+  display: block
 }
 
 .dropdown > .dropdown-toggle:active {
     /* Without this, clicking will make it sticky */
-    pointer-events: none;
+    pointer-events: none
+}
+
+.n00b-menu .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 
@@ -110,6 +125,14 @@ textarea {
 /*-----------------------------------------------------------------------------------*/
 /*	06.	Post Content
 /*-----------------------------------------------------------------------------------*/
+.entry-header {
+	margin-bottom: 5px;
+}
+.entry-header .date, 
+.entry-header .author {
+	margin-bottom: 1.25rem;
+	color: #999;
+}
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -144,10 +167,10 @@ div[class^="comment-form-"] textarea[name="comment"] {
 /*	11.	Sidebar
 /*-----------------------------------------------------------------------------------*/
 .sidebar {
-	margin-top: 20px
+	margin-bottom: 20px
 }
 .sidebar section {
-	margin-bottom: 40px
+	margin-bottom: 20px
 }
 .sidebar ul,
 .sidebar ol {
