@@ -23,6 +23,6 @@ defined('ABSPATH') || exit;
 $parameters = array(
 	'prefix'          => 'n00b_', # must be unique. Used to save settings.
 	'use_type'        => 'theme',     # 'theme' if used within a theme OR 'plugin' if used within a plugin
-	'default_options' => false,       # whether to load default options
-	'custom_options'  => false,       # whether to load custom options
+	'default_options' => true,       # whether to load default options
+	'custom_options'  => true,       # whether to load custom options
 );
