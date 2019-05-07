@@ -17,21 +17,24 @@
 
 get_header();
 
-$container   = n00b_get_option('n00b_options', 'container_type', get_queried_object_id());
-$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id());
+$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id(), array('metabox_prefix' => N00B_META_PREFIX));
+$layout_cols = n00b_get_option('n00b_options', 'layout_cols', get_queried_object_id(), array('metabox_prefix' => N00B_META_PREFIX));
+$layout_obj  = n00b_custom_col_class($layout_cols);
 
-$sidebar_left_col  = n00b_get_col_class($sidebar_pos, 'sidebar_left_col');
-$sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col');
-$article_col       = n00b_get_col_class($sidebar_pos, 'article_col');
+extract($layout_obj); // Returns ($sl_custom_class, $sr_custom_class, $a_custom_class) variables
+
+$sidebar_left_col  = n00b_get_col_class($sidebar_pos, 'sidebar_left_col', $sl_custom_class);
+$sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col', $sr_custom_class);
+$article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_class);
 
 ?>
 
 	<!-- START Title section -->
-	<section id="title">
+	<section id="title" class="mb-3">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<h1><?php _e('Latest Posts', 'n00b'); ?></h1>
+					<h1 class="display-4"><?php _e('Latest Posts', 'n00b'); ?></h1>
 				</div>
 			</div>
 		</div>		

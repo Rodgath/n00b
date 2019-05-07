@@ -6,6 +6,7 @@
  * @since 1.0
  */
 defined('N00B_PROTOCAL') || define('N00B_PROTOCAL', is_ssl() ? 'https' : 'http');
+defined('N00B_META_PREFIX') || define('N00B_META_PREFIX', 'n00b_');
 
 /**
  * Include custom functions file if it exists
@@ -107,7 +108,7 @@ if (!function_exists('n00b_widgets_init')) {
 				'description'   => 'Main sidebar widget description should be added here',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
+				'before_title'  => '<h3 class="widget-title font-weight-light">',
 				'after_title'   => '</h3>',
 			)));
 			
@@ -118,7 +119,7 @@ if (!function_exists('n00b_widgets_init')) {
 				'description'   => 'Sidebar widget right description should be added here',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
+				'before_title'  => '<h3 class="widget-title font-weight-light">',
 				'after_title'   => '</h3>',
 			)));
 			
@@ -129,7 +130,7 @@ if (!function_exists('n00b_widgets_init')) {
 				'description'   => 'Sidebar widget left description should be added here',
 				'before_widget' => '<div id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</div>',
-				'before_title'  => '<h3 class="widget-title">',
+				'before_title'  => '<h3 class="widget-title font-weight-light">',
 				'after_title'   => '</h3>',
 			)));
 		}
@@ -231,7 +232,7 @@ if (!function_exists('n00b_main_nav')) {
 			'menu'            => '',
 			'container'       => 'div',
 			'container_class' => 'collapse navbar-collapse',
-			'container_id'    => 'navbar',
+			'container_id'    => 'main-menu-container',
 			'menu_class'      => 'navbar-nav ml-auto',
 			'menu_id'         => 'main-menu',
 			'echo'            => true,
@@ -570,9 +571,9 @@ if (!function_exists('n00b_custom_col_class')) {
 	function n00b_custom_col_class($layout_cols = array()) {
 		
 		return array(
-			'sl_custom_class' => isset($layout_cols['sl_custom_class']) ? $layout_cols['sl_custom_class'] : '',
-			'sr_custom_class' => isset($layout_cols['sr_custom_class']) ? $layout_cols['sr_custom_class'] : '', 
-			'a_custom_class'  => isset($layout_cols['a_custom_class']) ? $layout_cols['a_custom_class'] : ''
+			'sl_custom_class' => isset($layout_cols['sl_custom_class']) ? $layout_cols['sl_custom_class'] : '', // Sidebar Left Custom Class
+			'sr_custom_class' => isset($layout_cols['sr_custom_class']) ? $layout_cols['sr_custom_class'] : '', // Sidebar Right Custom Class
+			'a_custom_class'  => isset($layout_cols['a_custom_class']) ? $layout_cols['a_custom_class'] : ''    // Article Custom Class
 		);
 	}
 }
@@ -592,14 +593,55 @@ if (!function_exists('n00b_get_option')) {
 		$use_type = isset($use_type) ? $use_type : 'theme';
 		
 		if (!empty($option_name) && empty($option_id)) {
+			
 			return class_exists('DilazPanel') ? DilazPanel::getOptions($option_name) : false;
+			
 		} else if (!empty($option_name) && !empty($option_id) && $object_id === 0) {
+			
 			return class_exists('DilazPanel') ? DilazPanel::getOption($option_name, $option_id) : false;
+			
 		} else if (!empty($option_id) && !empty($object_id) && $object_id > 0) {
+			
 			$metabox_setting = ($prefix != '') ? get_post_meta($object_id, $prefix.$option_id, true) : false;
-			return (($metabox_setting == 'default' || !$metabox_setting) && class_exists('DilazPanel')) ? DilazPanel::getOption($option_name, $option_id) : $metabox_setting;
+			
+			return (class_exists('DilazPanel') && ($metabox_setting == 'default' || !$metabox_setting)) ? DilazPanel::getOption($option_name, $option_id) : $metabox_setting;
 		}
 		
 		return false;
+	}
+}
+
+/**
+ * Get layout container class
+ *
+ * @since 1.0
+ */
+if (!function_exists('n00b_container_class')) {
+	
+	function n00b_container_class($container_type = '') {
+		
+		switch($container_type) {
+			case 'default_width':
+				return 'container';
+				break;
+			
+			case 'full_width':
+				return 'container-fluid';
+				break;
+			
+			case 'custom_width':
+				add_action('wp_head', function() {
+					$custom_width = n00b_get_option('n00b_options', 'custom_width', get_queried_object_id(), array('metabox_prefix' => N00B_META_PREFIX));
+					if ($custom_width > 0) {
+						echo '<style type="text/css">.wrapper { max-width: '. $custom_width .'}</style>';
+					}
+				}, 100);
+				return 'container';
+				break;
+			
+			default:
+				return '';
+				break;
+		}
 	}
 }
