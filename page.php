@@ -32,11 +32,11 @@ $article_col = n00b_get_col_class($sidebar_pos, 'article_col', $req_cols_ac, $re
 ?>
 
 	<!-- START Title section -->
-	<section id="title">
+	<section id="title" class="mb-3">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<h1><?php the_title(); ?></h1>
+					<h1 class="display-4"><?php the_title(); ?></h1>
 				</div>
 			</div>
 		</div>		

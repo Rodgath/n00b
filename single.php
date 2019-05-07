@@ -9,15 +9,14 @@
  * @link       https://codex.wordpress.org/Template_Hierarchy
  */
  
-get_header(); 
+get_header();
 
-$metabox_prefix = 'n00b_';
-$container   = n00b_get_option('n00b_options', 'container_type', get_queried_object_id(), array('metabox_prefix' => $metabox_prefix));
-$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id(), array('metabox_prefix' => $metabox_prefix));
-$meta_cols   = get_post_meta(get_queried_object_id(), $metabox_prefix .'layout_cols', true);
-$layout_cols = $meta_cols === '' ? n00b_get_option('n00b_options', 'layout_cols', get_queried_object_id(), array('metabox_prefix' => $metabox_prefix)) : '';
-$layout_cols_object = n00b_custom_col_class($layout_cols);
-extract($layout_cols_object);
+$sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id(), array('metabox_prefix' => N00B_META_PREFIX));
+$layout_cols = n00b_get_option('n00b_options', 'layout_cols', get_queried_object_id(), array('metabox_prefix' => N00B_META_PREFIX));
+$layout_obj  = n00b_custom_col_class($layout_cols);
+
+extract($layout_obj); // Returns ($sl_custom_class, $sr_custom_class, $a_custom_class) variables
+
 $sidebar_left_col  = n00b_get_col_class($sidebar_pos, 'sidebar_left_col', $sl_custom_class);
 $sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col', $sr_custom_class);
 $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_class);

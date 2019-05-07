@@ -21,11 +21,11 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col');
 ?>
 
 	<!-- START Title section -->
-	<section id="title">
+	<section id="title" class="mb-3">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<h1><?php echo sprintf( __('%s Search Results for ', 'n00b'), $wp_query->found_posts ); echo get_search_query(); ?></h1>
+					<h1 class="display-4"><?php echo sprintf( __('%s Search Results for ', 'n00b'), $wp_query->found_posts ); echo get_search_query(); ?></h1>
 				</div>
 			</div>
 		</div>		
