@@ -47,12 +47,25 @@ $options[] = array(
 			'desc' => __('Choose the type of content container.', 'dilaz-panel'),
 			'type' => 'radio',
 			'options' => array(
+				'default_width' => __('Default Width', 'dilaz-panel'),
 				'full_width' => __('Full Width', 'dilaz-panel'),
-				'fixed_width' => __('Fixed Width', 'dilaz-panel')
+				'custom_width' => __('Custom Width', 'dilaz-panel')
 			),
-			'std'   => 'full_width',
+			'std'   => 'default_width',
 			'class' => '',
 			'args'  => array('inline' => true),
+		);
+		$options[] = array(
+			'id'    => 'custom_width',
+			'name'  => __('Custom Width:', 'dilaz-panel'),
+			'desc'  => __('Enter the custom width in px. Example, 1000px', 'dilaz-panel'),
+			'type'  => 'text',
+			'std'   => '1000px',
+			'class' => '',
+			'req_args' => array(
+				'container_type' => 'custom_width'
+			),
+			'req_action' => 'show',
 		);
 		$options[] = array(
 			'id'   => 'sidebar_position',
@@ -74,7 +87,7 @@ $options[] = array(
 		$options[] = array(
 			'id'	  => 'layout_cols',
 			'name'	  => __('Layout Columns (Optional):', 'dilaz-panel'),
-			'desc'	  => __('Set preferred column widths.', 'dilaz-panel'),
+			'desc'	  => __('Set preferred column width classes, space-separated.', 'dilaz-panel'),
 			'type'	  => 'multitext',
 			'options' => array(
 				'sl_custom_class' => array('name' => __('Sidebar Left Custom Class', 'dilaz-panel'), 'default' => ''),
