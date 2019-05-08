@@ -40,7 +40,17 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 		</div>		
 	</section>
 	<!-- END Title section -->
-
+	
+	<!-- START breadcrumb -->
+	<section id="breadcrumb">
+		<div class="container-fluid">
+			<div class="row">
+				
+			</div>
+		</div>
+	</section>
+	<!-- END #breadcrumb -->
+	
 	<!-- START Content section -->
 	<section id="content">
 		<div class="container-fluid">

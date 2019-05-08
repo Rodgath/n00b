@@ -74,14 +74,4 @@ $container_class = n00b_container_class($container_type);
 
 	<!-- START main -->
 	<main role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-
-		<!-- START breadcrumb -->
-		<section id="breadcrumb">
-			<div class="container-fluid">
-				<div class="row">
-					
-				</div>
-			</div>
-		</section>
-		<!-- END #breadcrumb -->
 		
