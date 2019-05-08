@@ -44,6 +44,13 @@ textarea {
 	position: relative;
 }
 
+/* Common classes */
+.display-5 {
+	font-size: 2.5rem;
+	font-weight: 300;
+	line-height: 1.2;
+}
+
 /* Utilities */
 .clear:before, 
 .clear:after {
