@@ -128,6 +128,10 @@ textarea {
 .entry-header {
 	margin-bottom: 5px;
 }
+.entry-header .entry-title a,
+.entry-header .page-title a{
+	color: #343a40
+}
 .entry-header .date, 
 .entry-header .author {
 	margin-bottom: 1.25rem;
