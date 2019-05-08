@@ -28,14 +28,14 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="display-4"><?php the_title(); ?></h1>
+					<h1 class="display-5"><?php the_title(); ?></h1>
 				</div>
 			</div>
 		</div>		
 	</section>
 	<!-- END Title section -->
 	
-	<!-- START breadcrumb -->
+	<!-- START Breadcrumb section -->
 	<section id="breadcrumb">
 		<div class="container-fluid">
 			<div class="row">
@@ -43,7 +43,7 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 			</div>
 		</div>
 	</section>
-	<!-- END #breadcrumb -->
+	<!-- END Breadcrumb section -->
 	
 	<!-- START Content section -->
 	<section id="content">
