@@ -8,7 +8,7 @@
  * @version    1.0
  * @link       https://codex.wordpress.org/Template_Hierarchy
  */
- 
+
 get_header();
 
 $sidebar_pos = n00b_get_option('n00b_options', 'sidebar_position', get_queried_object_id(), array('metabox_prefix' => N00B_META_PREFIX));
@@ -23,6 +23,28 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 
 ?>
 
+	<!-- START Title section -->
+	<section id="title" class="mb-3">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="display-4"><?php the_title(); ?></h1>
+				</div>
+			</div>
+		</div>		
+	</section>
+	<!-- END Title section -->
+	
+	<!-- START breadcrumb -->
+	<section id="breadcrumb">
+		<div class="container-fluid">
+			<div class="row">
+				
+			</div>
+		</div>
+	</section>
+	<!-- END #breadcrumb -->
+	
 	<!-- START Content section -->
 	<section id="content">
 		<div class="container-fluid">
