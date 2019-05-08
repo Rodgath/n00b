@@ -6,8 +6,8 @@ Feel free to use this starter theme in your __premium__ and __commercial__ proje
 ## Features
 * Easy to use
 * Short learning curve
-* [Dilaz Panel](https://github.com/Rodgath/Dilaz-Panel-Plugin) compatible
-* [Dilaz Metaboxes](https://github.com/Rodgath/Dilaz-Metaboxes-Plugin) compatible
+* [Dilaz Panel Plugin](https://github.com/Rodgath/Dilaz-Panel-Plugin) compatible
+* [Dilaz Metabox Plugin](https://github.com/Rodgath/Dilaz-Metabox-Plugin) compatible
 
 
 ## Theme Structure
