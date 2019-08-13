@@ -175,7 +175,6 @@ add_filter('panel_option_filter_'. $parameters['option_name'], function($options
 				'class' => ''
 			);
 			
-			
 	$insert = DilazPanelFunctions::insert_field($options, 'custom_options_main', 'custom_options_sub', $insert_custom_data, 'before');
 	
 	return $insert;
@@ -220,7 +219,6 @@ add_filter('panel_option_filter_'. $parameters['option_name'], function($options
 				'std'  => 'no',
 				'class' => ''
 			);
-			
 			
 	$insert = DilazPanelFunctions::insert_field($options, 'custom_options_main', '', $insert_custom_data, 'last');
 	

@@ -4,13 +4,13 @@
 || Default Panel Option Fields
 || --------------------------------------------------------------------------------------------
 ||
-|| @package		Dilaz Panel
-|| @subpackage	Default Options
-|| @since		Dilaz Panel 1.1
-|| @author		Rodgath, https://github.com/Rodgath
-|| @copyright	Copyright (C) 2017, Rodgath LTD
-|| @link		https://github.com/Rodgath/Dilaz-Panel-Plugin
-|| @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+|| @package    Dilaz Panel
+|| @subpackage Default Options
+|| @since      Dilaz Panel 1.1
+|| @author     Rodgath, https://github.com/Rodgath
+|| @copyright  Copyright (C) 2017, Rodgath LTD
+|| @link       https://github.com/Rodgath/Dilaz-Panel-Plugin
+|| @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 || 
 || NOTE 1: This file is for experimetation and demo purposes. Do not use this file to add your options, 
 ||         othersise all your options and settings will be overwritten when updating this panel.
@@ -119,13 +119,13 @@ $options[] = array(
 			'desc' => __('Background style.', 'dilaz-panel'),
 			'type' => 'background',
 			'options' => array( 
-				'image'      => false, 
-				'repeat'     => false,
-				'size'       => false,
-				'position'   => false,
-				'attachment' => false,
-				'origin'     => false,
-				'color'      => false, 
+				'image'      => true,
+				'repeat'     => true,
+				'size'       => true,
+				'position'   => true,
+				'attachment' => true,
+				'origin'     => true,
+				'color'      => true,
 			),
 			'std'   => array( 
 				'image'      => '', 
@@ -141,10 +141,19 @@ $options[] = array(
 		$options[] = array(
 			'id'    => 'textarea',
 			'name'  => __('Textarea:', 'dilaz-panel'),
-			'desc'  => __('Enter text content. HTML tags are enabled.', 'dilaz-panel'),
+			'desc'  => __('Enter text content. HTML tags are NOT enabled (use code field for HTML tags).', 'dilaz-panel'),
 			'type'  => 'textarea',
 			'args'  => array('rows' => 5),
 			'std'   => 'Sample textarea content goes here.',
+			'class' => ''
+		);
+		$options[] = array(
+			'id'    => 'code',
+			'name'  => __('Code:', 'dilaz-panel'),
+			'desc'  => __('Enter code content. HTML tags are enabled.', 'dilaz-panel'),
+			'type'  => 'code',
+			'args'  => array('rows' => 5),
+			'std'   => '<b>Sample code content goes here.</b>',
 			'class' => ''
 		);
 		$options[] = array(
@@ -216,7 +225,7 @@ $options[] = array(
 	# SUB TAB - Image
 	# *****************************************************************************************
 	$options[] = array(
-		'id'   => 'image',
+		'id'   => 'image_files_example',
 		'name' => __('Image', 'dilaz-panel'),
 		'type' => 'subheading',
 	);
@@ -235,7 +244,7 @@ $options[] = array(
 			),
 		);
 		$options[] = array( 
-			'id'   => 'image',
+			'id'   => 'image_single',
 			'name' => __('Image File:', 'dilaz-panel'),
 			'desc' => __('Select/Upload single image file from media library.', 'dilaz-panel'),
 			'type' => 'upload',
@@ -248,7 +257,7 @@ $options[] = array(
 	# SUB TAB - Audio
 	# *****************************************************************************************
 	$options[] = array(
-		'id'   => 'audio',
+		'id'   => 'audio_files_example',
 		'name' => __('Audio', 'dilaz-panel'),
 		'type' => 'subheading',
 	);
@@ -267,7 +276,7 @@ $options[] = array(
 			),
 		);
 		$options[] = array(
-			'id'   => 'audio',
+			'id'   => 'audio_single',
 			'name' => __('Audio File:', 'dilaz-panel'),
 			'desc' => __('Select/Upload single audio file from media library.', 'dilaz-panel'),
 			'type' => 'upload',
@@ -280,7 +289,7 @@ $options[] = array(
 	# SUB TAB - Video
 	# *****************************************************************************************
 	$options[] = array(
-		'id'   => 'video',
+		'id'   => 'video_files_example',
 		'name' => __('Video', 'dilaz-panel'),
 		'type' => 'subheading',
 	);
@@ -299,7 +308,7 @@ $options[] = array(
 			),
 		);
 		$options[] = array(
-			'id'   => 'video',
+			'id'   => 'video_single',
 			'name' => __('Video File:', 'dilaz-panel'),
 			'desc' => __('Select/Upload single video file from media library.', 'dilaz-panel'),
 			'type' => 'upload',
@@ -562,16 +571,18 @@ $options[] = array(
 			'type' => 'font',
 			'options' => array( 
 				'family' => true,
+				'backup' => true, 
 				'subset' => true,
 				'weight' => true,
 				'size'   => true, 
 				'height' => true, 
 				'style'  => true, 
 				'case'   => true, 
-				'color'  => true, 
+				'color'  => true
 			),
 			'std' => array(
 				'family' => 'Trebuchet', 
+				'backup' => false, 
 				'subset' => false, 
 				'weight' => false,
 				'size'   => '18', 
@@ -589,6 +600,7 @@ $options[] = array(
 			'type' => 'font',
 			'options' => array( 
 				'family' => true, 
+				'backup' => true, 
 				'subset' => false, 
 				'weight' => true, 
 				'size'   => true, 
@@ -599,6 +611,7 @@ $options[] = array(
 			),
 			'std' => array(
 				'family' => 'Trebuchet', 
+				'backup' => false,
 				'subset' => false,
 				'weight' => false,
 				'size'   => false,
@@ -635,11 +648,24 @@ $options[] = array(
 			'desc' => __('Images used as radio option fields.', 'dilaz-panel'),
 			'type' => 'radioimage',
 			'options' => array(
-				'teal.css'  => $parameters['dir_url'] .'assets/images/colors/teal.png',
-				'cyan.css'  => $parameters['dir_url'] .'assets/images/colors/cyan.png',
-				'amber.css' => $parameters['dir_url'] .'assets/images/colors/amber.png',
+				'teal.css'  => array('src' => $parameters['dir_url'] .'assets/images/colors/teal.png', 'alt' => 'teal'),
+				'cyan.css'  => array('src' => $parameters['dir_url'] .'assets/images/colors/cyan.png', 'alt' => 'cyan'),
+				'amber.css' => array('src' => $parameters['dir_url'] .'assets/images/colors/amber.png', 'alt' => 'amber'),
 			),
 			'std'   => 'amber.css',
+			'class' => ''
+		);
+		$options[] = array(
+			'id'   => 'radioimage_tiled',
+			'name' => __('Radio Image Tiled Background:', 'dilaz-panel'),
+			'desc' => __('Images used as radio option fields.', 'dilaz-panel'),
+			'type' => 'radioimage',
+			'options' => array(
+				$parameters['dir_url'] .'assets/images/bg/crissXcross.png' => array('src' => $parameters['dir_url'] .'assets/images/bg/crissXcross.png', 'alt' => 'crissXcross'),
+				$parameters['dir_url'] .'assets/images/bg/nistri.png' => array('src' => $parameters['dir_url'] .'assets/images/bg/nistri.png', 'alt' => 'nistri'),
+			),
+			'std'   => $parameters['dir_url'] .'assets/images/bg/nistri.png',
+			'args'  => array('tiled_bg' => true),
 			'class' => ''
 		);
 		$options[] = array(
