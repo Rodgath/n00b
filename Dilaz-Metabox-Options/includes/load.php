@@ -21,6 +21,9 @@ $dilaz_mb_folder   = basename(dirname(__DIR__));
 $dilaz_mb_dir      = dirname(__DIR__);
 $dilaz_mb_includes = $dilaz_mb_dir .'/includes/';
 $dilaz_mb_options  = $dilaz_mb_dir .'/options/';
+	
+/* Define min PHP requirement */
+defined('DILAZ_METABOX_MIN_PHP') || define('DILAZ_METABOX_MIN_PHP', 5.6);
 
 # Dilaz Metabox plugin file constant
 defined('DILAZ_METABOX_PLUGIN_FILE') || define('DILAZ_METABOX_PLUGIN_FILE', 'dilaz-metabox/dilaz-metabox.php');
@@ -69,6 +72,17 @@ if (!is_plugin_active(DILAZ_METABOX_PLUGIN_FILE)) {
 	});
 	
 	return;
+	
+} else {
+	
+	define('PHP_VERSION_O', 5.0);
+	
+	# Check PHP version if Dilaz Metabox plugin is enabled
+	if (version_compare(PHP_VERSION_O, DILAZ_METABOX_MIN_PHP, '<')) {
+		add_action('admin_notices', function() {
+			echo '<div id="message" class="dilaz-metabox-notice notice notice-warning"><p><strong>'. sprintf(__('PHP version %1$s detected. It is recommended that you upgrade to PHP version %2$s or to the most recent release of PHP', 'dilaz-metabox'), PHP_VERSION, DILAZ_METABOX_MIN_PHP) .'</strong></p></div>';
+		});
+	}
 }
 
 # Lets ensure the DilazMetabox class is loaded
