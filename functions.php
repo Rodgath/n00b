@@ -69,9 +69,7 @@ if (!function_exists('n00b_theme_setup')) {
 		
 		/* Menu location */
 		register_nav_menus(apply_filters('n00b_nav_menus', array(
-			// 'top-menu'     => __('Top Header Menu', 'n00b'),
 			'main-menu'    => __('Main Header Menu', 'n00b'),
-			// 'footer-menu'  => __('Footer Menu', 'n00b'),
 			'sidebar-menu' => __('Sidebar Menu', 'n00b'),
 			'other-menu'   => __('Other Menu', 'n00b'), 
 		)));
