@@ -645,3 +645,26 @@ if (!function_exists('n00b_container_class')) {
 		}
 	}
 }
+
+/* 
+ * Integrate the Theme Updates Checker
+ * NOTE 1: Despite the name, it also works with themes.
+ * NOTE 2: Despite the name, it also works with themes.
+ * @link - https://github.com/YahnisElsts/plugin-update-checker
+ */
+ 
+/* Add update checker */
+require 'includes/update-checker/theme-update-checker.php';
+
+/* Build the update checker */
+$dilazPanelUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+	'https://github.com/Rodgath/n00b-Theme/',
+	__FILE__,
+	'n00b-Theme'
+);
+
+/* Optional: If you're using a private repository, specify the access token like this: */
+/* $myUpdateChecker->setAuthentication('your-token-here'); */
+
+/* Update from the "master" branch */
+$dilazPanelUpdateChecker->setBranch('master');
