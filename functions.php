@@ -507,6 +507,7 @@ if (!function_exists('n00b_get_col_class')) {
 			$article_last       = ' order-1 order-md-1 order-lg-2';
 			$sidebar_left_last  = ' order-2 order-md-2 order-lg-1';
 			$sidebar_right_last = ' order-3 order-md-3 order-lg-3';
+			
 			if ('both_left' == $sidebar_pos) {
 				$article_last       = ' order-1 order-md-1 order-lg-3';
 				$sidebar_left_last  = ' order-2 order-md-2 order-lg-1';
