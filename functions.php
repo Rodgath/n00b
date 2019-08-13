@@ -10,6 +10,7 @@ defined('N00B_META_PREFIX') || define('N00B_META_PREFIX', 'n00b_');
 
 /**
  * Include custom functions file if it exists
+ * This is useful if you are not using the child theme
  */
 if (file_exists(get_template_directory() .'/includes/functions/functions-custom.php')) {
 	include_once get_template_directory() .'/includes/functions/functions-custom.php';
