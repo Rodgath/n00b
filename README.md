@@ -6,9 +6,10 @@ Feel free to use this starter theme in your __premium__ and __commercial__ proje
 ## Features
 * Easy to use
 * Short learning curve
-* [Dilaz Panel Plugin](https://github.com/Rodgath/Dilaz-Panel-Plugin) compatible
-* [Dilaz Metabox Plugin](https://github.com/Rodgath/Dilaz-Metabox-Plugin) compatible
-* [n00b Plugin](https://github.com/Rodgath/n00b-Plugin) compatible
+* [Dilaz Panel Plugin](https://github.com/Rodgath/Dilaz-Panel-Plugin) ready
+* [Dilaz Metabox Plugin](https://github.com/Rodgath/Dilaz-Metabox-Plugin) ready
+* [n00b Plugin](https://github.com/Rodgath/n00b-Plugin) ready
+* Compatible with all WordPress plugins
 
 ## Theme Structure
 ```
@@ -82,3 +83,20 @@ themes/your-theme-name/                      # → Root of your n00b based theme
 ├── taxonomy-{taxonomy_slug}.php             # → Single taxonomy template e.g. location.php
 └── taxonomy-{taxonomy_slug}-{term_slug}.php # → Single taxonomy template e.g. taxonomy-location-texas.php
 ```
+
+## Download 
+
+To get a local working copy of the development repository, do:
+
+    git clone https://github.com/Rodgath/n00b-Theme.git
+
+Alternatively, you can download the latest development version as a tarball
+as follows:
+
+    wget --content-disposition https://github.com/Rodgath/n00b-Theme/tarball/master
+
+OR 
+
+    curl -LJO https://github.com/Rodgath/n00b-Theme/tarball/master
+    
+ 
