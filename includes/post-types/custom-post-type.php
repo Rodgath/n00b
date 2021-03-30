@@ -84,7 +84,7 @@ function n00b_register_custom_post_type() {
 		'menu_icon'             => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', // the icon for the custom post type menu
 		'capability_type'       => 'post',
 		'capabilities'          => array(),
-		'map_meta_cap'          => false,
+		'map_meta_cap'          => true,
 		'supports'              => array( 'title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'thumbnail', 'custom-fields', 'post-formats' ),
 		'register_meta_box_cb'  => null,
 		'taxonomies'            => array(),
