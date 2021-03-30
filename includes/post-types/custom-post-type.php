@@ -15,13 +15,13 @@
 /**
  * Flush rewrite rules for custom post types
  */
-add_action( 'after_switch_theme', 'n00b_flush_rewrite_rules' );
+add_action( 'after_switch_theme', 'n00b_flush_rewrite_rules_custom_post_type' );
 
 
 /**
  * Flush your rewrite rules
  */
-function n00b_flush_rewrite_rules() {
+function n00b_flush_rewrite_rules_custom_post_type() {
 	flush_rewrite_rules();
 }
 
