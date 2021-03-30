@@ -54,7 +54,7 @@ function n00b_register_custom_post_type() {
 			'search_items'          => __( 'Search Post Type Posts', 'n00b' ), 
 			'not_found'             => __( 'No Posts Found.', 'n00b' ), 
 			'not_found_in_trash'    => __( 'No Posts Found in Trash', 'n00b' ), 
-			'parent_item_colon'     => null
+			'parent_item_colon'     => null,
 			'all_items'             => __( 'All Custom Posts', 'n00b' ),
 			'archives'              => __( 'Custom Post Archives', 'n00b' ),
 			'attributes'            => __( 'Custom Post Attributes', 'n00b' ),
