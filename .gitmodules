@@ -1,0 +1,6 @@
+[submodule "Dilaz-Metabox-Options"]
+	path = Dilaz-Metabox-Options
+	url = https://github.com/Rodgath/Dilaz-Metabox-Options
+[submodule "Dilaz-Panel-Options"]
+	path = Dilaz-Panel-Options
+	url = https://github.com/Rodgath/Dilaz-Panel-Options
