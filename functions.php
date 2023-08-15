@@ -501,7 +501,7 @@ if (!function_exists('n00b_content_pages')) {
  */
 if (!function_exists('n00b_get_col_class')) {
 	
-	function n00b_get_col_class($sidebar_pos = '', $column_type, $custom_class = '') {
+	function n00b_get_col_class($sidebar_pos = '', $column_type = 'sidebar_right_col', $custom_class = '') {
 		
 		if ('both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) {
 			
