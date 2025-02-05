@@ -594,17 +594,17 @@ if (!function_exists('n00b_get_option')) {
 		
 		if (!empty($option_name) && empty($option_id)) {
 			
-			return class_exists('DilazPanel') ? DilazPanel::getOptions($option_name) : false;
+			return class_exists('DilazPanel\DilazPanel') ? DilazPanel\DilazPanel::getOptions($option_name) : false;
 			
 		} else if (!empty($option_name) && !empty($option_id) && $object_id === 0) {
 			
-			return class_exists('DilazPanel') ? DilazPanel::getOption($option_name, $option_id) : false;
+			return class_exists('DilazPanel\DilazPanel') ? DilazPanel\DilazPanel::getOption($option_name, $option_id) : false;
 			
 		} else if (!empty($option_id) && !empty($object_id) && $object_id > 0) {
 			
 			$metabox_setting = ($prefix != '') ? get_post_meta($object_id, $prefix.$option_id, true) : false;
 			
-			return (class_exists('DilazPanel') && ($metabox_setting == 'default' || !$metabox_setting)) ? DilazPanel::getOption($option_name, $option_id) : $metabox_setting;
+			return (class_exists('DilazPanel\DilazPanel') && ($metabox_setting == 'default' || !$metabox_setting)) ? DilazPanel\DilazPanel::getOption($option_name, $option_id) : $metabox_setting;
 		}
 		
 		return false;
