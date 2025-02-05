@@ -7,9 +7,9 @@ get_header();
 $container   = get_theme_mod('n00b_container_type');
 $sidebar_pos = get_theme_mod('n00b_sidebar_position');
 
-$sidebar_left_col  = n00b_get_sidebar_col_class($sidebar_pos, 'sidebar_left_col');
-$sidebar_right_col = n00b_get_sidebar_col_class($sidebar_pos, 'sidebar_right_col');
-$article_col       = n00b_get_sidebar_col_class($sidebar_pos, 'article_col');
+$sidebar_left_col  = n00b_get_col_class($sidebar_pos, 'sidebar_left_col');
+$sidebar_right_col = n00b_get_col_class($sidebar_pos, 'sidebar_right_col');
+$article_col       = n00b_get_col_class($sidebar_pos, 'article_col');
 
 ?>
 
