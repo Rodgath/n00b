@@ -31,15 +31,15 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 					<h1 class="display-5"><?php echo sprintf( __('%s Search Results for ', 'n00b'), $wp_query->found_posts ); echo get_search_query(); ?></h1>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</section>
 	<!-- END Title section -->
-	
+
 	<!-- START Breadcrumb section -->
 	<section id="breadcrumb">
 		<div class="container-fluid">
 			<div class="row">
-				
+
 			</div>
 		</div>
 	</section>
@@ -49,13 +49,13 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 	<section id="content">
 		<div class="container-fluid">
 			<div class="row">
-				
+
 				<?php if ('left' === $sidebar_pos || 'both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) { ?>
 				<aside class="sidebar sidebar-left <?php echo $sidebar_left_col; ?>" role="complementary">
 					<?php get_sidebar('left'); ?>
 				</aside>
 				<?php } ?>
-				
+
 				<div class="content <?php echo $article_col; ?>">
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<?php get_template_part('template-parts/content', 'search'); ?>
@@ -65,13 +65,13 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 					<?php get_template_part('template-parts/content', 'none'); ?>
 				<?php endif; ?>
 				</div>
-				
+
 				<?php if ('right' === $sidebar_pos || 'both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) { ?>
 				<aside class="sidebar sidebar-right <?php echo $sidebar_right_col; ?>" role="complementary">
 					<?php get_sidebar('right'); ?>
 				</aside>
 				<?php } ?>
-				
+
 			</div>
 		</div>
 	</section>

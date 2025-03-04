@@ -11,7 +11,7 @@
  * @since      1.0
  * @version    1.0
  */
- 
+
 $container_type  = n00b_get_option('n00b_options', 'container_type', get_queried_object_id(), array('metabox_prefix' => N00B_META_PREFIX));
 $container_class = n00b_container_class($container_type);
 
@@ -23,7 +23,7 @@ $container_class = n00b_container_class($container_type);
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="Copyright" content="Copyright &copy; <?php bloginfo('name'); ?> <?php echo date('Y'); ?>. All Rights Reserved.">
-	<title><?php wp_title('•', true, 'right'); bloginfo('name'); ?></title>
+	<title><?php wp_title('ï¿½', true, 'right'); bloginfo('name'); ?></title>
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php wp_title(); echo ' | '; bloginfo( 'description' ); ?>" />
 	<meta name="author" content="<?php bloginfo('name'); ?>">
@@ -34,9 +34,9 @@ $container_class = n00b_container_class($container_type);
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('stylesheet_url'); ?>" />
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-	
+
 	<?php wp_head(); // do not delete this line ?>
-	
+
 </head>
 
 <body <?php body_class(); ?>>
@@ -66,12 +66,11 @@ $container_class = n00b_container_class($container_type);
 					<?php n00b_main_nav(); ?>
 				</div>
 			</nav>
-			
+
 		<?php } ?>
-		
+
 	</header>
 	<!-- END #header -->
 
 	<!-- START main -->
 	<main role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
-		

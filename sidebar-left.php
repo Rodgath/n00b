@@ -18,7 +18,7 @@ if (!is_active_sidebar('sidebar-widget-left')) {
 <div class="sidebar-content">
 
 	<?php do_action('n00b_left_sidebar_top_hook'); ?>
-	
+
 	<div class="sidebar-widget">
 		<?php if (function_exists('dynamic_sidebar')) { dynamic_sidebar('sidebar-widget-left'); } ?>
 	</div>

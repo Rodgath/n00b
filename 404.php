@@ -29,15 +29,15 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 			<div class="row">
 				<h1><?php _e('Error', 'n00b'); ?> 404</h1>
 			</div>
-		</div>		
+		</div>
 	</section>
 	<!-- END Title section -->
-	
+
 	<!-- START Breadcrumb section -->
 	<section id="breadcrumb">
 		<div class="container-fluid">
 			<div class="row">
-				
+
 			</div>
 		</div>
 	</section>
@@ -47,13 +47,13 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 	<section id="content">
 		<div class="container">
 			<div class="row">
-				
+
 				<?php if ('left' === $sidebar_pos || 'both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) { ?>
 				<aside class="sidebar sidebar-left <?php echo $sidebar_left_col; ?>" role="complementary">
 					<?php get_sidebar('left'); ?>
 				</aside>
 				<?php } ?>
-				
+
 				<article id="post-404" class="content <?php echo $article_col; ?>">
 					<h2><?php _e('Page not found', 'n00b'); ?></h2>
 					<p><?php _e('The page you were looking for does not exist.', 'n00b'); ?></p>
@@ -61,16 +61,16 @@ $article_col       = n00b_get_col_class($sidebar_pos, 'article_col', $a_custom_c
 					<?php get_search_form(); ?>
 					<h3><a href="<?php echo home_url(); ?>"><?php _e('Return home?', 'n00b'); ?></a></h3>
 				</article>
-				
+
 				<?php if ('right' === $sidebar_pos || 'both' === $sidebar_pos || 'both_left' === $sidebar_pos || 'both_right' === $sidebar_pos) { ?>
 				<aside class="sidebar sidebar-right <?php echo $sidebar_right_col; ?>" role="complementary">
 					<?php get_sidebar('right'); ?>
 				</aside>
 				<?php } ?>
-				
+
 			</div>
 		</div>
 	</section>
 	<!-- END Content section -->
-	
+
 <?php get_footer(); ?>

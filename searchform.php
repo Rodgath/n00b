@@ -7,9 +7,9 @@
  * @since      1.0
  * @version    1.0
  */
- 
+
 $unique_id = uniqid('search-form-');
- 
+
 ?>
 <form method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>" role="search">
 	<label class="assistive-text" for="<?php echo esc_attr($unique_id); ?>"><?php echo _x('Search', 'label', 'n00b'); ?></label>

@@ -24,7 +24,7 @@
 				<div class="col-md-12">
 					<hr />
 					<p class="copyright">
-						<?php _e('Copyright', 'n00b'); ?> &copy;			
+						<?php _e('Copyright', 'n00b'); ?> &copy;
 						<span itemprop="copyrightYear"><?php echo date('Y'); ?></span>
 						<span itemprop="copyrightHolder"><?php bloginfo('name'); ?></span>. <?php _e('Powered by', 'n00b'); ?>
 						<a href="http://wordpress.org" title="WordPress">WordPress</a> &amp; <a href="https://github.com/Rodgath/n00b-Theme" title="WP n00b"><?php _e('WP n00b', 'n00b'); ?></a>.

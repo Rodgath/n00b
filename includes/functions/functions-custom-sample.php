@@ -1,9 +1,9 @@
-<?php 
+<?php
 /**
- * Rename this file to functions-custom.php and then 
+ * Rename this file to functions-custom.php and then
  * add all your custom functions here.
  *
- * NOTE: You have to rename this file or else your 
+ * NOTE: You have to rename this file or else your
  * custom functions will be overwritten during
  * theme update
  *

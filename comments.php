@@ -57,7 +57,7 @@ The comments page
 <?php } else { // this is displayed if there are no comments so far ?>
 
 	<?php if ( comments_open() ) { ?>
-	
+
 		<!-- If comments are open, but there are no comments. -->
 
 	<?php } else { // comments are closed ?>
@@ -81,11 +81,11 @@ The comments page
 		</div>
 
 		<?php if ( get_option('comment_registration') && !is_user_logged_in() ) { ?>
-		
+
 			<div class="alert alert-help col-md-12">
 				<p><?php printf( __( 'You must be %1$slogged in%2$s to post a comment.', 'n00b' ), '<a href="<?php echo wp_login_url( get_permalink() ); ?>">', '</a>' ); ?></p>
 			</div>
-			
+
 		<?php } else { ?>
 
 			<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
@@ -99,33 +99,33 @@ The comments page
 				<?php } else { ?>
 
 					<div id="comment-form-elements" class="clearfix">
-						
+
 						<?php $aria_req = $req ? " aria-required='true'" : ''; ?>
-					
+
 						<div class="comment-form-author col-md-4">
 							<label for="author"><?php esc_html_e('Name', 'n00b'); echo ($req ? ' <span class="required">*</span>' : ''); ?></label>
 							<input id="author" name="author" type="text" value="<?php esc_attr($comment_author); ?>" size="20" tabindex="1"<?php echo $aria_req; ?> />
 						</div>
-						
+
 						<div class="comment-form-email col-md-4">
 							<label for="email"><?php esc_html_e('Email', 'n00b'); echo ($req ? ' <span class="required">*</span>' : ''); ?></label><small> <?php _e("(will not be published)", 'n00b' ); ?></small>
 							<input id="email" name="email" type="text" value="<?php esc_attr($comment_author_email); ?>" size="20" tabindex="2"<?php echo $aria_req; ?> />
 						</div>
-						
+
 						<div class="comment-form-url col-md-4">
 							<label for="url"><?php esc_html_e('Website', 'n00b'); ?></label><br />
 							<input id="url" name="url" type="text" value="<?php esc_attr($comment_author_url); ?>" size="20" tabindex="3" />
 						</div>
-						
+
 					</div>
 
 				<?php } ?>
-					
+
 				<div class="comment-form-comment col-md-12">
 					<label for="comment"><?php _ex('Comment', 'noun', 'n00b'); ?> <span class="required">*</span></label>
 					<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" tabindex="4"></textarea>
 				</div>
-				
+
 				<div class="comment-form-submit col-md-12">
 					<input name="submit" type="submit" id="submit" class="button" tabindex="5" value="<?php _e( 'Submit', 'n00b' ); ?>" />
 					<?php comment_id_fields(); ?>
@@ -142,7 +142,7 @@ The comments page
 			</form>
 
 		<?php } // If registration required and not logged in ?>
-		
+
 	</section>
 
 <?php } ?>

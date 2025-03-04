@@ -26,10 +26,10 @@ if ( ! function_exists( 'n00b_customize_register' ) ) {
 
 add_action('customize_register', 'n00b_theme_customizer', 1);
 if (!function_exists('n00b_theme_customizer')) {
-	
+
 	function n00b_theme_customizer($wp_customize) {
-		
-		// Uncomment the below lines to remove the default customize sections 
+
+		// Uncomment the below lines to remove the default customize sections
 
 		// $wp_customize->remove_section('title_tagline');
 		// $wp_customize->remove_section('colors');

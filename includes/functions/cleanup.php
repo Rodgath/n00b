@@ -3,7 +3,7 @@
 /**
  * Clean up wp_head()
  */
-remove_action('wp_head', 'wp_generator'); // WP version 
+remove_action('wp_head', 'wp_generator'); // WP version
 remove_action('wp_head', 'rsd_link'); // EditURI link
 remove_action('wp_head', 'wlwmanifest_link'); // windows live writer
 remove_action('wp_head', 'feed_links', 2); // post and comment feeds
@@ -18,6 +18,6 @@ add_filter('script_loader_src', 'bones_remove_wp_ver_css_js', 9999); // remove W
  * Do not generate and display WordPress version
  */
 add_filter('the_generator', 'no_generator');
-function no_generator()  { 
-	return ''; 
+function no_generator()  {
+	return '';
 }

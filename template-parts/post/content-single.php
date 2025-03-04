@@ -28,17 +28,17 @@
 
 	<footer class="entry-meta">
 		<?php if ('post' == get_post_type()) { ?>
-			
+
 			<?php $categories_list = get_the_category_list( __(', ', 'n00b') ); ?>
 			<?php if ($categories_list) {  ?>
 			<span class="category-links"><?php printf( __('Posted in %1$s', 'n00b'), $categories_list ); ?></span>
 			<?php } ?>
-			
+
 			<?php $tags_list = get_the_tag_list( '', __(', ', 'n00b') ); ?>
 			<?php if ($tags_list) { ?>
 			<span class="tag-links"><?php printf( __('Tagged %1$s', 'n00b'), $tags_list ); ?></span>
 			<?php } ?>
-			
+
 		<?php } ?>
 
 		<?php if (!post_password_required() && (comments_open() || '0' != get_comments_number())) { ?>
@@ -47,9 +47,9 @@
 
 		<?php edit_post_link( __('Edit', 'n00b'), '<span class="edit-link">', '</span>' ); ?>
 	</footer>
-	
+
 	<?php if (is_single()) n00b_adjacent_posts(); ?>
-	
+
 	<?php if (!post_password_required() && (comments_open() || '0' != get_comments_number())) { comments_template(); } ?>
-	
+
 </article>

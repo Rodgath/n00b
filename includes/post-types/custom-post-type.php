@@ -2,8 +2,8 @@
 /**
  * File for registering custom post types
  *
- * This page walks you through creating a custom post type.  
- * You can edit it or copy the code to create another one. 
+ * This page walks you through creating a custom post type.
+ * You can edit it or copy the code to create another one.
  *
  * @package    WordPress
  * @subpackage n00b
@@ -40,20 +40,20 @@ add_action( 'init', 'n00b_register_custom_post_type');
  * @return  void
  */
 function n00b_register_custom_post_type() {
-	
+
 	$args = array(
 		'labels' => array(
-			'name'                  => __( 'Custom Types', 'n00b' ), 
-			'singular_name'         => __( 'Custom Post', 'n00b' ), 
-			'add_new'               => __( 'Add New', 'n00b' ), 
-			'add_new_item'          => __( 'Add New Custom Type', 'n00b' ), 
-			'edit_item'             => __( 'Edit Post Types', 'n00b' ), 
-			'new_item'              => __( 'New Post Type', 'n00b' ), 
-			'view_item'             => __( 'View Post Type Post', 'n00b' ), 
-			'view_items'            => __( 'View Post Type Posts', 'n00b' ), 
-			'search_items'          => __( 'Search Post Type Posts', 'n00b' ), 
-			'not_found'             => __( 'No Posts Found.', 'n00b' ), 
-			'not_found_in_trash'    => __( 'No Posts Found in Trash', 'n00b' ), 
+			'name'                  => __( 'Custom Types', 'n00b' ),
+			'singular_name'         => __( 'Custom Post', 'n00b' ),
+			'add_new'               => __( 'Add New', 'n00b' ),
+			'add_new_item'          => __( 'Add New Custom Type', 'n00b' ),
+			'edit_item'             => __( 'Edit Post Types', 'n00b' ),
+			'new_item'              => __( 'New Post Type', 'n00b' ),
+			'view_item'             => __( 'View Post Type Post', 'n00b' ),
+			'view_items'            => __( 'View Post Type Posts', 'n00b' ),
+			'search_items'          => __( 'Search Post Type Posts', 'n00b' ),
+			'not_found'             => __( 'No Posts Found.', 'n00b' ),
+			'not_found_in_trash'    => __( 'No Posts Found in Trash', 'n00b' ),
 			'parent_item_colon'     => null,
 			'all_items'             => __( 'All Custom Posts', 'n00b' ),
 			'archives'              => __( 'Custom Post Archives', 'n00b' ),
@@ -80,7 +80,7 @@ function n00b_register_custom_post_type() {
 		'show_in_rest'          => false,
 		'rest_base'             => 'custom_type',
 		'rest_controller_class' => 'WP_REST_Posts_Controller',
-		'menu_position'         => 8, // this is what order you want it to appear in on the left hand side menu 
+		'menu_position'         => 8, // this is what order you want it to appear in on the left hand side menu
 		'menu_icon'             => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', // the icon for the custom post type menu
 		'capability_type'       => 'post',
 		'capabilities'          => array(),
@@ -89,8 +89,8 @@ function n00b_register_custom_post_type() {
 		'register_meta_box_cb'  => null,
 		'taxonomies'            => array(),
 		'has_archive'           => 'custom_type', // you can rename the slug here
-		'rewrite'	            => array( 
-			'slug'       => 'custom_type', 
+		'rewrite'	            => array(
+			'slug'       => 'custom_type',
 			'with_front' => false,
 			'feeds'      => true,
 			'pages'      => true,
@@ -100,14 +100,14 @@ function n00b_register_custom_post_type() {
 		'can_export'       => true,
 		'delete_with_user' => false,
 	);
-	
+
 	// Register the post type
 	register_post_type( 'custom_type', $args );
-	
+
 	// this adds your post categories to your custom post type
 	register_taxonomy_for_object_type( 'category', 'custom_type' );
-	
+
 	// this adds your post tags to your custom post type
 	register_taxonomy_for_object_type( 'post_tag', 'custom_type' );
-	
+
 }

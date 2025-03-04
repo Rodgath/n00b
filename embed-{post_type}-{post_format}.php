@@ -7,7 +7,7 @@
  *
  * @param string {post_type}   The post type.
  * @param string {post_format} The post format.
- * 
+ *
  * @example embed-post-audio.php
  *
  * @link https://codex.wordpress.org/Template_Hierarchy

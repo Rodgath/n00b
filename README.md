@@ -30,7 +30,7 @@ themes/your-theme-name/                      # → Root of your n00b based theme
 │   └── {Page Template}.php                  # → Page template name e.g. full-width.php
 ├── post-type-templates/                     # → WP 4.7+ post type templates
 │   └── {Post Type Template}.php             # → Post type template name e.g. full-width.php
-├── template-parts/                          # → Template parts 
+├── template-parts/                          # → Template parts
 │   ├── page/                                # → Page template parts
 │   ├── post/                                # → Post template parts
 │   ├── content.php                          # → General content
@@ -84,7 +84,7 @@ themes/your-theme-name/                      # → Root of your n00b based theme
 └── taxonomy-{taxonomy_slug}-{term_slug}.php # → Single taxonomy template e.g. taxonomy-location-texas.php
 ```
 
-## Download 
+## Download
 
 To get a local working copy of the development repository, do:
 
@@ -95,8 +95,8 @@ as follows:
 
     wget --content-disposition https://github.com/Rodgath/n00b-Theme/tarball/master
 
-OR 
+OR
 
     curl -LJO https://github.com/Rodgath/n00b-Theme/tarball/master
-    
- 
+
+
